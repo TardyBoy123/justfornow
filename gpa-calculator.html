@@ -4,33 +4,117 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UWO GPA Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #add8e6;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        header {
+            margin-bottom: 20px;
+        }
+        h1 {
+            color: white;
+            font-size: 3rem;
+            margin: 0;
+        }
+        p {
+            color: white;
+            margin-bottom: 20px;
+        }
+        .btn {
+            background-color: #004d00;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .btn:hover {
+            background-color: #003300;
+        }
+        #gpaCalculator {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        table {
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        th {
+            color: white;
+            font-weight: bold;
+        }
+        input, select {
+            width: 100%;
+            padding: 8px;
+            margin: 0;
+            box-sizing: border-box;
+        }
+        #audio-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        #audio-controls p {
+            margin-left: 20px;
+            color: white;
+        }
+        #audio-controls button {
+            margin-left: 10px;
+        }
+    </style>
 </head>
 <body>
-    <h1>UWO GPA Calculator</h1>
-    <p>Enter the courses, grades, and weights to calculate your GPA.</p>
+    <header>
+        <button class="btn" onclick="window.location.href='index.html'">Home</button>
+        <h1>UWO GPA Calculator</h1>
+        <p>Enter the courses, grades, and weights to calculate your GPA.</p>
+    </header>
 
-    <div class="container">
-        <button id="homeButton" onclick="window.location.href='index.html'">Home</button>
+    <div id="gpaCalculator">
         <table>
-            <tr>
-                <th>Course</th>
-                <th>Grade (%)</th>
-                <th>Weight (0.5 or 1.0)</th>
-            </tr>
-            <tr>
-                <td><input type="text" placeholder="Course"></td>
-                <td><input type="text" placeholder="Grade (%)"></td>
-                <td>
-                    <select>
-                        <option value="1.0">1.0</option>
-                        <option value="0.5">0.5</option>
-                    </select>
-                </td>
-            </tr>
+            <thead>
+                <tr>
+                    <th>Course</th>
+                    <th>Grade (%)</th>
+                    <th>Weight (0.5 or 1.0)</th>
+                </tr>
+            </thead>
+            <tbody id="courseTable">
+                <tr>
+                    <td><input type="text" placeholder="Course"></td>
+                    <td><input type="number" placeholder="Grade (%)"></td>
+                    <td>
+                        <select>
+                            <option value="1.0">1.0</option>
+                            <option value="0.5">0.5</option>
+                        </select>
+                    </td>
+                </tr>
+            </tbody>
         </table>
-        <button id="addRow">Add row</button>
-        <button id="computeGPA">Compute GPA</button>
+        <button class="btn" id="addRow">Add row</button>
+        <button class="btn" id="computeGPA">Compute GPA</button>
     </div>
 
     <div id="audio-controls">
@@ -39,12 +123,69 @@
             Your browser does not support the audio element.
         </audio>
         <p>Now playing - Imogen Heap - Just For Now</p>
+        <button class="btn" onclick="document.getElementById('audio').play()">Play</button>
+        <button class="btn" onclick="document.getElementById('audio').pause()">Pause</button>
     </div>
 
-    <script src="script.js"></script>
+    <script>
+        document.getElementById('addRow').addEventListener('click', function () {
+            var table = document.getElementById('courseTable');
+            var row = table.insertRow();
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            var cell3 = row.insertCell(2);
 
-    <script src="script.js"></script>
+            cell1.innerHTML = '<input type="text" placeholder="Course">';
+            cell2.innerHTML = '<input type="number" placeholder="Grade (%)">';
+            cell3.innerHTML = '<select><option value="1.0">1.0</option><option value="0.5">0.5</option></select>';
+        });
 
-    
+        document.getElementById('computeGPA').addEventListener('click', function () {
+            var table = document.getElementById('courseTable');
+            var rows = table.getElementsByTagName('tr');
+            var totalPoints = 0;
+            var totalWeight = 0;
+
+            for (var i = 0; i < rows.length; i++) {
+                var grade = parseFloat(rows[i].cells[1].getElementsByTagName('input')[0].value);
+                var weight = parseFloat(rows[i].cells[2].getElementsByTagName('select')[0].value);
+
+                var gpa;
+                if (grade >= 90) {
+                    gpa = 4.0;
+                } else if (grade >= 85) {
+                    gpa = 3.9;
+                } else if (grade >= 80) {
+                    gpa = 3.7;
+                } else if (grade >= 77) {
+                    gpa = 3.3;
+                } else if (grade >= 73) {
+                    gpa = 3.0;
+                } else if (grade >= 70) {
+                    gpa = 2.7;
+                } else if (grade >= 67) {
+                    gpa = 2.3;
+                } else if (grade >= 63) {
+                    gpa = 2.0;
+                } else if (grade >= 60) {
+                    gpa = 1.7;
+                } else if (grade >= 57) {
+                    gpa = 1.3;
+                } else if (grade >= 53) {
+                    gpa = 1.0;
+                } else if (grade >= 50) {
+                    gpa = 0.7;
+                } else {
+                    gpa = 0.0;
+                }
+
+                totalPoints += gpa * weight;
+                totalWeight += weight;
+            }
+
+            var finalGPA = totalPoints / totalWeight;
+            alert("Your GPA is: " + finalGPA.toFixed(2));
+        });
+    </script>
 </body>
 </html>
