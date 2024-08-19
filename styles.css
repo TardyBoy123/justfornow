@@ -24,6 +24,8 @@ p {
     padding: 20px;
     border-radius: 10px;
     box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+    text-align: left;
 }
 
 table {
@@ -55,36 +57,22 @@ button {
     text-align: center;
     text-decoration: none;
     font-size: 1em;
-    margin: 10px;
+    margin: 10px auto;
     cursor: pointer;
     border-radius: 5px;
+    display: block;
+    width: calc(100% - 40px);
 }
 
 button:hover {
     background-color: #104E8B;
 }
 
-button#addRow, button#computeGPA {
-    display: block;
-    width: calc(50% - 20px);
-    margin: 10px auto;
-}
-
 #homeButton {
-    background-color: #1E90FF;
-    border: none;
-    color: white;
-    padding: 10px 20px;
+    display: block;
+    width: calc(100% - 40px);
+    margin: 0 auto 20px auto;
     text-align: center;
-    text-decoration: none;
-    font-size: 1em;
-    cursor: pointer;
-    border-radius: 5px;
-    margin-bottom: 20px;
-}
-
-#homeButton:hover {
-    background-color: #104E8B;
 }
 
 #audio-controls {
@@ -93,8 +81,7 @@ button#addRow, button#computeGPA {
 }
 
 audio {
-    width: 80%;
-    margin: 0 auto;
+    width: 100%;
 }
 
 p {
