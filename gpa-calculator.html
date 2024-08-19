@@ -7,22 +7,20 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <header>
-        <button class="btn" id="home-btn" onclick="location.href='index.html'">Home</button>
-    </header>
+    <h1>UWO GPA Calculator</h1>
+    <p>Enter the courses, grades, and weights to calculate your GPA.</p>
+
     <div class="container">
-        <h1>UWO GPA Calculator</h1>
-        <p>Enter the courses, grades, and weights to calculate your GPA.</p>
-        
+        <button id="homeButton" onclick="window.location.href='index.html'">Home</button>
         <table>
             <tr>
                 <th>Course</th>
                 <th>Grade (%)</th>
                 <th>Weight (0.5 or 1.0)</th>
             </tr>
-            <tr id="courseRow">
+            <tr>
                 <td><input type="text" placeholder="Course"></td>
-                <td><input type="number" placeholder="Grade (%)"></td>
+                <td><input type="text" placeholder="Grade (%)"></td>
                 <td>
                     <select>
                         <option value="1.0">1.0</option>
@@ -31,40 +29,18 @@
                 </td>
             </tr>
         </table>
-        
-        <button class="btn action-btn" id="addRow">Add row</button>
-        <button class="btn action-btn" id="computeGPA">Compute GPA</button>
-
-        <div id="audio-controls">
-            <p>Now playing - <span id="song-title">Imogen Heap - Just For Now</span></p>
-            <audio controls autoplay loop id="audio-player">
-                <source src="Imogen Heap - Just For Now (Official Audio).mp3" type="audio/mpeg">
-                Your browser does not support the audio element.
-            </audio>
-        </div>
+        <button id="addRow">Add row</button>
+        <button id="computeGPA">Compute GPA</button>
     </div>
 
-    <script>
-        document.getElementById('addRow').addEventListener('click', function () {
-            const table = document.querySelector('table');
-            const newRow = document.createElement('tr');
-            newRow.innerHTML = `
-                <td><input type="text" placeholder="Course"></td>
-                <td><input type="number" placeholder="Grade (%)"></td>
-                <td>
-                    <select>
-                        <option value="1.0">1.0</option>
-                        <option value="0.5">0.5</option>
-                    </select>
-                </td>
-            `;
-            table.appendChild(newRow);
-        });
+    <div id="audio-controls">
+        <audio controls autoplay loop>
+            <source src="Imogen Heap - Just For Now (Official Audio).mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+        </audio>
+        <p>Now playing - Imogen Heap - Just For Now</p>
+    </div>
 
-        document.getElementById('computeGPA').addEventListener('click', function () {
-            // Your GPA calculation code here
-        });
-
-    </script>
+    <script src="script.js"></script>
 </body>
 </html>
