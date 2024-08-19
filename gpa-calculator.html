@@ -28,6 +28,10 @@
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border: 2px solid white; /* White border */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
         }
 
         .home-box {
@@ -43,15 +47,17 @@
             color: white;
             font-size: 3rem;
             margin: 0;
+            text-align: center;
         }
 
         p {
             color: white;
             margin-bottom: 20px;
+            text-align: center;
         }
 
         .btn {
-            background-color: #4CAF50;
+            background-color: #4F2683;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -67,7 +73,7 @@
         }
 
         .btn:hover {
-            background-color: #45a049;
+            background-color: #4F2683;
         }
 
         #gpaCalculator {
@@ -123,12 +129,30 @@
             font-family: 'Comic Sans MS', cursive, sans-serif; /* Bold Comic Sans */
             font-weight: bold; /* Make button text bold */
         }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            margin-bottom: 20px;
+        }
+
+        .logo-container img {
+            width: 100px;
+            height: auto;
+        }
     </style>
 </head>
 <body>
     <div class="home-box">
         <button class="btn" onclick="window.location.href='index.html'">Home</button>
     </div>
+
+    <div class="logo-container">
+        <img src="images.png" alt="Western Logo Left">
+        <img src="images.png" alt="Western Logo Right">
+    </div>
+
 
     <div class="box">
         <header>
@@ -204,7 +228,7 @@
                     gpa = 3.7;
                 } else if (grade >= 77) {
                     gpa = 3.3;
-                } else if ( grade >= 73) {
+                } else if (grade >= 73) {
                     gpa = 3.0;
                 } else if (grade >= 70) {
                     gpa = 2.7;
