@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>GPA Calculator</h1>
+        <p>Enter your grades (0-100) for up to 5 courses:</p>
+        <input type="number" id="grade1" placeholder="Course 1">
+        <input type="number" id="grade2" placeholder="Course 2">
+        <input type="number" id="grade3" placeholder="Course 3">
+        <input type="number" id="grade4" placeholder="Course 4">
+        <input type="number" id="grade5" placeholder="Course 5">
+        <button onclick="calculateGPA()">Calculate GPA</button>
+
+        <div id="results" style="margin-top: 20px;"></div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="macro-calculator.html">Macro Calculator</a>
+        </nav>
+    </div>
+
+    <script>
+        function calculateGPA() {
+            let total = 0;
+            let count = 0;
+
+            for (let i = 1; i <= 5; i++) {
+                const grade = document.getElementById('grade' + i).value;
+                if (grade) {
+                    total += parseFloat(grade);
+                    count++;
+                }
+            }
+
+            if (count > 0) {
+                const gpa = total / count;
+                document.getElementById('results').innerHTML = `<p>Your GPA is: ${gpa.toFixed(2)}</p>`;
+            } else {
+                document.getElementById('results').innerHTML = '<p>Please enter at least one grade.</p>';
+            }
+        }
+    </script>
+</body>
+</html>
