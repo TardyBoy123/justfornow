@@ -8,7 +8,7 @@
         body {
             background-color: #add8e6;
             font-family: 'Comic Sans MS', cursive, sans-serif;
-            font-weight: bold; /* Make all fonts bold */
+            font-weight: bold;
             margin: 0;
             padding: 0;
             display: flex;
@@ -27,7 +27,7 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            border: 2px solid white; /* White border */
+            border: 2px solid white;
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -36,15 +36,27 @@
             max-width: 800px;
         }
 
-        .home-box {
+        .home-box, .btn {
             background-color: #add8e6;
-            padding: 10px;
+            padding: 10px 20px;
             border-radius: 5px;
             margin-bottom: 10px;
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
-            border: 2px solid white; /* White border */
+            border: 2px solid white;
             text-align: center;
-            width: 120px;
+            font-size: 1rem;
+            cursor: pointer;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-weight: bold;
+            display: inline-block;
+        }
+
+        .home-box {
+            width: auto;
+        }
+
+        .home-box:hover, .btn:hover {
+            background-color: #add8e6;
         }
 
         h1 {
@@ -58,26 +70,6 @@
             color: white;
             margin-bottom: 20px;
             text-align: center;
-        }
-
-        .btn {
-            background-color: #add8e6;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            text-align: center;
-            text-decoration: none;
-            display: inline-block;
-            font-size: 1rem;
-            margin: 10px;
-            cursor: pointer;
-            border-radius: 5px;
-            font-family: 'Comic Sans MS', cursive, sans-serif; /* Bold Comic Sans */
-            font-weight: bold; /* Make the button text bold */
-        }
-
-        .btn:hover {
-            background-color: #add8e6;
         }
 
         #gpaCalculator {
@@ -96,8 +88,8 @@
             padding: 10px;
             text-align: left;
             border-bottom: 1px solid #ddd;
-            font-family: 'Comic Sans MS', cursive, sans-serif; /* Bold Comic Sans */
-            font-weight: bold; /* Make table text bold */
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-weight: bold;
         }
 
         th {
@@ -110,8 +102,8 @@
             padding: 8px;
             margin: 0;
             box-sizing: border-box;
-            font-family: 'Comic Sans MS', cursive, sans-serif; /* Bold Comic Sans */
-            font-weight: bold; /* Make input text bold */
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-weight: bold;
         }
 
         #audio-controls {
@@ -124,14 +116,14 @@
         #audio-controls p {
             margin-left: 20px;
             color: white;
-            font-family: 'Comic Sans MS', cursive, sans-serif; /* Bold Comic Sans */
-            font-weight: bold; /* Make audio control text bold */
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-weight: bold;
         }
 
         #audio-controls button {
             margin-left: 10px;
-            font-family: 'Comic Sans MS', cursive, sans-serif; /* Bold Comic Sans */
-            font-weight: bold; /* Make button text bold */
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-weight: bold;
         }
 
         .logo-container {
@@ -190,8 +182,10 @@
         </div>
     </div>
 
-    <button class="btn" id="addRow">Add row</button>
-    <button class="btn" id="computeGPA">Compute GPA</button>
+    <div class="home-box">
+        <button class="btn" id="addRow">Add row</button>
+        <button class="btn" id="computeGPA">Compute GPA</button>
+    </div>
 
     <div id="audio-controls">
         <audio controls autoplay loop>
