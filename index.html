@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>justfornow.ca - Music</title>
+    <title>justfornow.ca - Home</title>
     <style>
         body {
             background-color: #add8e6;
             font-family: 'Comic Sans MS', cursive, sans-serif;
             margin: 0;
-            padding: 20px;
+            padding: 0;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
+            min-height: 100vh;
         }
 
         .container {
@@ -32,68 +33,71 @@
             margin-bottom: 20px;
         }
 
+        nav {
+            margin-top: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            background-color: #add8e6;
+            color: white;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-weight: bold;
+            margin: 5px;
+            display: inline-block;
+        }
+
+        nav a:hover {
+            background-color: #87ceeb;
+        }
+
+        footer {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            background-color: #f0f0f0;
+            padding: 10px 0;
+            text-align: center;
+        }
+
         #audio-controls {
             margin-top: 20px;
             text-align: center;
         }
 
         audio {
-            width: 100%;
+            width: 300px;
         }
 
         #now-playing {
             margin-top: 10px;
-            font-size: 1rem;
+            font-size: 0.9rem;
             color: #333;
-        }
-
-        .song-list {
-            list-style: none;
-            padding: 0;
-            margin: 20px 0;
-        }
-
-        .song-list li {
-            margin: 10px 0;
-        }
-
-        .song-list button {
-            padding: 10px;
-            border: none;
-            border-radius: 5px;
-            background-color: #add8e6;
-            color: white;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            cursor: pointer;
-        }
-
-        .song-list button:hover {
-            background-color: #87ceeb;
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>Music Browser</h1>
-        
-        <ul class="song-list">
-            <li><button onclick="playSong('Lykke Li - Sex Money Feelings Die (Audio).mp3', 'Lykke Li - Sex Money Feelings Die')">Lykke Li - Sex Money Feelings Die</button></li>
-            <li><button onclick="playSong('Poison Tree.mp3', 'Poison Tree - Grouper')">Poison Tree - Grouper</button></li>
-            <li><button onclick="playSong('Loose Cannon.mp3', 'Loose Cannon - Puzzle')">Loose Cannon - Puzzle</button></li>
-            <li><button onclick="playSong('Grimes - Genesis.mp3', 'Grimes - Genesis')">Grimes - Genesis</button></li>
-            <li><button onclick="playSong('Pink Pantheress - Pain (Official Visualiser).mp3', 'Pink Pantheress - Pain')">Pink Pantheress - Pain</button></li>
-            <li><button onclick="playSong('Grimes - Oblivion (1).mp3', 'Grimes - Oblivion')">Grimes - Oblivion</button></li>
-        </ul>
+        <h1>justfornow.ca</h1>
+        <nav>
+            <a href="macro-calculator.html">Macro Calculator</a>
+            <a href="gpa-calculator.html">GPA Calculator</a>
+            <a href="forums.html">Forums</a>
+        </nav>
+    </div>
 
-        <!-- Music Player -->
+    <!-- Footer with Music Player -->
+    <footer>
         <div id="audio-controls">
             <audio id="audioPlayer" controls autoplay>
-                <source id="audioSource" src="Lykke Li - Sex Money Feelings Die (Audio).mp3" type="audio/mpeg">
+                <source id="audioSource" src="Lykke Li - Sex Money Feelings Die.mp3" type="audio/mpeg">
                 Your browser does not support the audio element.
             </audio>
             <p id="now-playing">Now playing - Lykke Li - Sex Money Feelings Die</p>
         </div>
-    </div>
+    </footer>
 
     <script>
         function playSong(file, title) {
@@ -110,7 +114,7 @@
 
         // Automatically play the first song when the page loads
         window.onload = function() {
-            playSong('Lykke Li - Sex Money Feelings Die (Audio).mp3', 'Lykke Li - Sex Money Feelings Die');
+            playSong('Lykke Li - Sex Money Feelings Die.mp3', 'Lykke Li - Sex Money Feelings Die');
         };
     </script>
 </body>
