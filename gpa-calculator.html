@@ -16,20 +16,39 @@
             justify-content: center;
             height: 100vh;
         }
+
         header {
             margin-bottom: 20px;
         }
+
+        .box {
+            background-color: #add8e6;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .home-box {
+            background-color: #add8e6;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+
         h1 {
             color: white;
             font-size: 3rem;
             margin: 0;
         }
+
         p {
             color: white;
             margin-bottom: 20px;
         }
+
         .btn {
-            background-color: #add8e6;
+            background-color: #4CAF50;
             color: white;
             border: none;
             padding: 10px 20px;
@@ -41,81 +60,96 @@
             cursor: pointer;
             border-radius: 5px;
         }
+
         .btn:hover {
-            background-color: #add8e6;
+            background-color: #45a049;
         }
+
         #gpaCalculator {
             display: flex;
             flex-direction: column;
             align-items: center;
             width: 100%;
         }
+
         table {
             border-collapse: collapse;
             margin-bottom: 20px;
         }
+
         th, td {
             padding: 10px;
             text-align: left;
             border-bottom: 1px solid #ddd;
         }
+
         th {
             color: white;
             font-weight: bold;
         }
+
         input, select {
             width: 100%;
             padding: 8px;
             margin: 0;
             box-sizing: border-box;
         }
+
         #audio-controls {
             display: flex;
             align-items: center;
             justify-content: center;
             margin-top: 20px;
         }
+
         #audio-controls p {
             margin-left: 20px;
             color: white;
         }
+
         #audio-controls button {
             margin-left: 10px;
         }
     </style>
 </head>
 <body>
-    <header>
+    <div class="home-box">
         <button class="btn" onclick="window.location.href='index.html'">Home</button>
-        <h1>UWO GPA Calculator</h1>
-        <p>Enter the courses, grades, and weights to calculate your GPA.</p>
-    </header>
-
-    <div id="gpaCalculator">
-        <table>
-            <thead>
-                <tr>
-                    <th>Course</th>
-                    <th>Grade (%)</th>
-                    <th>Weight (0.5 or 1.0)</th>
-                </tr>
-            </thead>
-            <tbody id="courseTable">
-                <tr>
-                    <td><input type="text" placeholder="Course"></td>
-                    <td><input type="number" placeholder="Grade (%)"></td>
-                    <td>
-                        <select>
-                            <option value="1.0">1.0</option>
-                            <option value="0.5">0.5</option>
-                        </select>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-        <button class="btn" id="addRow">Add row</button>
-        <button class="btn" id="computeGPA">Compute GPA</button>
     </div>
+
+    <div class="box">
+        <header>
+            <h1>UWO GPA Calculator</h1>
+            <p>Enter the courses, grades, and weights to calculate your GPA.</p>
+        </header>
+
+        <div id="gpaCalculator">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Course</th>
+                        <th>Grade (%)</th>
+                        <th>Weight (0.5 or 1.0)</th>
+                    </tr>
+                </thead>
+                <tbody id="courseTable">
+                    <tr>
+                        <td><input type="text" placeholder="Course"></td>
+                        <td><input type="number" placeholder="Grade (%)"></td>
+                        <td>
+                            <select>
+                                <option value="1.0">1.0</option>
+                                <option value="0.5">0.5</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <button class="btn" id="addRow">Add row</button>
+    <button class="btn" id="computeGPA">Compute GPA</button>
 
     <div id="audio-controls">
         <audio controls autoplay loop>
