@@ -3,18 +3,115 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>justfornow.ca</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>justfornow.ca - Music</title>
+    <style>
+        body {
+            background-color: #add8e6;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .container {
+            max-width: 800px;
+            width: 100%;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #333;
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        #audio-controls {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        audio {
+            width: 100%;
+        }
+
+        #now-playing {
+            margin-top: 10px;
+            font-size: 1rem;
+            color: #333;
+        }
+
+        .song-list {
+            list-style: none;
+            padding: 0;
+            margin: 20px 0;
+        }
+
+        .song-list li {
+            margin: 10px 0;
+        }
+
+        .song-list button {
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            background-color: #add8e6;
+            color: white;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            cursor: pointer;
+        }
+
+        .song-list button:hover {
+            background-color: #87ceeb;
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>justfornow.ca</h1>
-        <nav>
-            <a href="macro-calculator.html">Macro Calculator</a>
-            <a href="gpa-calculator.html">GPA Calculator</a>
-            <!-- New link to the forums page -->
-            <a href="forums.html">Forums</a>
-        </nav>
+        <h1>Music Browser</h1>
+        
+        <ul class="song-list">
+            <li><button onclick="playSong('Lykke Li - Sex Money Feelings Die (Audio).mp3', 'Lykke Li - Sex Money Feelings Die')">Lykke Li - Sex Money Feelings Die</button></li>
+            <li><button onclick="playSong('Poison Tree.mp3', 'Poison Tree - Grouper')">Poison Tree - Grouper</button></li>
+            <li><button onclick="playSong('Loose Cannon.mp3', 'Loose Cannon - Puzzle')">Loose Cannon - Puzzle</button></li>
+            <li><button onclick="playSong('Grimes - Genesis.mp3', 'Grimes - Genesis')">Grimes - Genesis</button></li>
+            <li><button onclick="playSong('Pink Pantheress - Pain (Official Visualiser).mp3', 'Pink Pantheress - Pain')">Pink Pantheress - Pain</button></li>
+            <li><button onclick="playSong('Grimes - Oblivion (1).mp3', 'Grimes - Oblivion')">Grimes - Oblivion</button></li>
+        </ul>
+
+        <!-- Music Player -->
+        <div id="audio-controls">
+            <audio id="audioPlayer" controls autoplay>
+                <source id="audioSource" src="Lykke Li - Sex Money Feelings Die (Audio).mp3" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+            <p id="now-playing">Now playing - Lykke Li - Sex Money Feelings Die</p>
+        </div>
     </div>
+
+    <script>
+        function playSong(file, title) {
+            var audioPlayer = document.getElementById('audioPlayer');
+            var audioSource = document.getElementById('audioSource');
+            var nowPlaying = document.getElementById('now-playing');
+
+            audioSource.src = file;
+            audioPlayer.load(); // Load the new source
+            audioPlayer.play(); // Play the new song
+
+            nowPlaying.textContent = 'Now playing - ' + title; // Update now playing text
+        }
+
+        // Automatically play the first song when the page loads
+        window.onload = function() {
+            playSong('Lykke Li - Sex Money Feelings Die (Audio).mp3', 'Lykke Li - Sex Money Feelings Die');
+        };
+    </script>
 </body>
 </html>
