@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Macro Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Macro Calculator</h1>
+        <p>Enter your daily calorie goal:</p>
+        <input type="number" id="calories" placeholder="Calories">
+        <button onclick="calculateMacros()">Calculate Macros</button>
+
+        <div id="results" style="margin-top: 20px;"></div>
+
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="gpa-calculator.html">GPA Calculator</a>
+        </nav>
+    </div>
+
+    <script>
+        function calculateMacros() {
+            const calories = document.getElementById('calories').value;
+            if (calories) {
+                const protein = calories * 0.3 / 4;
+                const fat = calories * 0.25 / 9;
+                const carbs = calories * 0.45 / 4;
+
+                document.getElementById('results').innerHTML = `
+                    <p>Protein: ${protein.toFixed(1)}g</p>
+                    <p>Fat: ${fat.toFixed(1)}g</p>
+                    <p>Carbs: ${carbs.toFixed(1)}g</p>
+                `;
+            } else {
+                document.getElementById('results').innerHTML = '<p>Please enter a calorie goal.</p>';
+            }
+        }
+    </script>
+</body>
+</html>
