@@ -88,6 +88,12 @@
             font-weight: bold;
             text-align: center;
         }
+        #nowPlayingMessage {
+            color: #fff;
+            text-align: center;
+            font-size: 16px;
+            margin-top: 10px;
+        }
     </style>
 </head>
 <body>
@@ -129,8 +135,8 @@
     <!-- Image placed below results -->
     <img src="macro calc image.jpg" alt="Macro Calculation Image" style="max-width: 100%; height: auto;">
 
-    <!-- Song Player -->
-    <audio id="songPlayer" controls>
+    <!-- Song Player (autoplay enabled) -->
+    <audio id="songPlayer" autoplay>
         <source src="maybe for you there's a tomorrow (tiktok version).mp3" type="audio/mpeg">
         Your browser does not support the audio element.
     </audio>
@@ -198,8 +204,13 @@
 
         // Play the song and display the "Now Playing" message
         document.getElementById('songPlayer').addEventListener('play', function() {
-            document.getElementById('nowPlayingMessage').innerText = "Now playing - Maybe for you there's a tomorrow";
+            document.getElementById('nowPlayingMessage').innerText = "Now Playing - Maybe For You There's a Tomorrow";
         });
+
+        // Start playing the song automatically when the page loads
+        window.onload = function() {
+            document.getElementById('songPlayer').play();
+        };
     </script>
 
 </body>
