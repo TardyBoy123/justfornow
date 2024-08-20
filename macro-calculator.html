@@ -3,42 +3,243 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Macro Calculator</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Fast Food Macro Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        h1, h2 {
+            text-align: center;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+        }
+        select, input[type="number"], button {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #218838;
+        }
+        #results {
+            font-size: 18px;
+            font-weight: bold;
+            text-align: center;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Under Construction</h1>
-        <h1>Macro Calculator</h1>
-        <p>Enter your daily calorie goal:</p>
-        <input type="number" id="calories" placeholder="Calories">
-        <button onclick="calculateMacros()">Calculate Macros</button>
 
-        <div id="results" style="margin-top: 20px;"></div>
+    <h1>Fast Food Macro Calculator</h1>
+    <form id="macroForm">
+        <label for="restaurant">Choose a restaurant:</label>
+        <select id="restaurant" name="restaurant" required>
+            <option value="" disabled selected>Select a restaurant</option>
+            <option value="mcdonalds">McDonald's</option>
+            <option value="marybrowns">Mary Brown's</option>
+            <option value="popeyes">Popeyes</option>
+            <option value="chickfila">Chick-fil-A</option>
+        </select>
 
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="gpa-calculator.html">GPA Calculator</a>
-        </nav>
-    </div>
+        <div id="menuItems"></div>
+
+        <label for="servings">How many servings?</label>
+        <input type="number" id="servings" name="servings" value="1" min="1" required>
+
+        <button type="button" onclick="calculateMacros()">Calculate Macros</button>
+    </form>
+
+    <h2>Results</h2>
+    <p id="results"></p>
 
     <script>
-        function calculateMacros() {
-            const calories = document.getElementById('calories').value;
-            if (calories) {
-                const protein = calories * 0.3 / 4;
-                const fat = calories * 0.25 / 9;
-                const carbs = calories * 0.45 / 4;
+        // Full menu data for each restaurant with every item from McDonald's, Popeyes, Mary Brown's, and Chick-fil-A
+        const menuData = {
+            mcdonalds: {
+                // A La Carte
+                "Big Mac": { protein: 25, calories: 524 },
+                "Quarter Pounder with Cheese": { protein: 30, calories: 544 },
+                "McChicken": { protein: 14, calories: 420 },
+                "Spicy McChicken": { protein: 15, calories: 477 },
+                "Fillet-O-Fish": { protein: 14, calories: 346 },
+                "Chicken McNuggets (6 pieces)": { protein: 12, calories: 253 },
+                "Chicken McNuggets (10 pieces)": { protein: 23, calories: 440 },
+                "Medium Fries": { protein: 7, calories: 340 },
+                "Large Fries": { protein: 10, calories: 510 },
+                "Coca Cola (Medium)": { protein: 0, calories: 210 },
+                "Sprite (Medium)": { protein: 0, calories: 210 },
+                "Fanta (Medium)": { protein: 0, calories: 220 },
+                "McFlurry Oreo": { protein: 8, calories: 510 },
+                "Apple Pie": { protein: 2, calories: 230 },
+                "Hot Fudge Sundae": { protein: 7, calories: 330 },
+                "Strawberry Sundae": { protein: 7, calories: 330 },
+                "Egg McMuffin": { protein: 17, calories: 300 },
+                "Sausage McMuffin with Egg": { protein: 21, calories: 450 },
+                "Hash Browns": { protein: 2, calories: 150 },
+                "Pancakes with Syrup": { protein: 8, calories: 350 },
+                "Chicken McGriddle": { protein: 14, calories: 390 },
+                // Drinks
+                "Medium Coffee": { protein: 1, calories: 0 },
+                "Large Coffee": { protein: 1, calories: 0 },
+                "Medium Iced Coffee": { protein: 1, calories: 140 },
+                "Large Iced Coffee": { protein: 1, calories: 170 },
+                "Water (500ml)": { protein: 0, calories: 0 },
+                "Orange Juice (Medium)": { protein: 1, calories: 140 },
+                "Milk (Small)": { protein: 8, calories: 150 },
+                "Chocolate Milk (Small)": { protein: 8, calories: 160 },
+                // Desserts
+                "Vanilla Cone": { protein: 5, calories: 200 },
+                "Chocolate Chip Cookie": { protein: 2, calories: 170 },
+                "Baked Apple Pie": { protein: 2, calories: 230 },
+                "Caramel Sundae": { protein: 7, calories: 340 },
+                "Strawberry Sundae": { protein: 7, calories: 280 },
+                "Hot Caramel Sundae": { protein: 7, calories: 340 },
+            },
+            popeyes: {
+                "Chicken Sandwich (Classic)": { protein: 28, calories: 699 },
+                "Chicken Sandwich (Spicy)": { protein: 28, calories: 700 },
+                "Cajun Fries (Regular)": { protein: 4, calories: 260 },
+                "Cajun Fries (Large)": { protein: 8, calories: 490 },
+                "Red Beans and Rice (Regular)": { protein: 6, calories: 230 },
+                "Red Beans and Rice (Large)": { protein: 10, calories: 440 },
+                "Mashed Potatoes with Gravy (Regular)": { protein: 2, calories: 110 },
+                "Mashed Potatoes with Gravy (Large)": { protein: 4, calories: 240 },
+                "Biscuits": { protein: 3, calories: 210 },
+                "Coleslaw (Regular)": { protein: 1, calories: 140 },
+                "Coleslaw (Large)": { protein: 2, calories: 260 },
+                "Coke (22 oz)": { protein: 0, calories: 270 },
+                "Sprite (22 oz)": { protein: 0, calories: 260 },
+                "Iced Tea (22 oz)": { protein: 0, calories: 150 },
+                "Cinnamon Apple Pie": { protein: 3, calories: 240 },
+                "Homestyle Mac and Cheese": { protein: 10, calories: 210 },
+                "Popcorn Shrimp": { protein: 11, calories: 390 },
+                "Jambalaya (Regular)": { protein: 9, calories: 210 },
+                "Naked Chicken Tenders (3 pieces)": { protein: 43, calories: 170 },
+                "Naked Chicken Tenders (5 pieces)": { protein: 72, calories: 280 },
+                "Blackened Chicken Sandwich": { protein: 25, calories: 560 },
+            },
+            marybrowns: {
+                "Big Mary on a Bun": { protein: 28.7, calories: 530 },
+                "Spicy Big Mary on a Bun": { protein: 28.7, calories: 521 },
+                "Big Mary Deluxe on a Bun": { protein: 41.2, calories: 721 },
+                "Nashville Mary": { protein: 34.0, calories: 660 },
+                "Buffalo Mary on a Bun": { protein: 35.0, calories: 690 },
+                "Grilled Chicken Sandwich": { protein: 36.0, calories: 570 },
+                "Wrap - No Sauce": { protein: 26.8, calories: 439 },
+                "Wrap - With Sauce": { protein: 27.3, calories: 590 },
+                "Chicken Tenders - 3 pc": { protein: 32.4, calories: 370 },
+                "Chicken Tenders - 5 pc": { protein: 54.1, calories: 616 },
+                "Buffalo Chicken Tenders - 3 pc": { protein: 32.8, calories: 444 },
+                "Buffalo Chicken Tenders - 5 pc": { protein: 54.7, calories: 745 },
+                "Chicken Pop-ins - Regular": { protein: 30.8, calories: 301 },
+                "Chicken Pop-ins - Large": { protein: 46.2, calories: 452 },
+                "Taters - Small": { protein: 3.9, calories: 263 },
+                "Taters - Medium": { protein: 9.5, calories: 636 },
+                "Taters - Large": { protein: 14.4, calories: 965 },
+                "Taters Poutine - Small": { protein: 20.5, calories: 653 },
+                "Taters Poutine - Large": { protein: 36.6, calories: 1023 },
+                "Coleslaw - Small": { protein: 1.1, calories: 131 },
+                "Coleslaw - Medium": { protein: 2.0, calories: 240 },
+                "Coleslaw - Large": { protein: 3.3, calories: 391 },
+                "Macaroni Salad - Small": { protein: 2.8, calories: 204 },
+                "Macaroni Salad - Medium": { protein: 7.4, calories: 544 },
+                "Macaroni Salad - Large": { protein: 9.3, calories: 680 },
+                "Gravy - Small": { protein: 0.8, calories: 33 },
+                "Gravy - Medium": { protein: 2.1, calories: 82 },
+                "Gravy - Large": { protein: 2.9, calories: 115 },
+                "Apple Pies": { protein: 1.7, calories: 297 },
+                "Strawberry Pie": { protein: 3, calories: 320 },
+                "Caramilk Chocolate Cake Cup": { protein: 3.0, calories: 300 },
+                "Side Breast with Skin, Small Fries": { protein: 34.0, calories: 583 },
+                "Drum Side Breast with Skin, Small Taters": { protein: 47.9, calories: 666 },
+                "Crispy Chicken Wrap": { protein: 26.8, calories: 439 },
+                "Nashville Taters": { protein: 10, calories: 570 },
+            },
+            chickfila: {
+                "Chick-fil-A Chicken Sandwich": { protein: 29, calories: 440 },
+                "Chick-fil-A Spicy Chicken Sandwich": { protein: 28, calories: 490 },
+                "Waffle Fries (Medium)": { protein: 4, calories: 360 },
+                "Grilled Chicken Sandwich": { protein: 28, calories: 320 },
+                "Chicken Nuggets (8 pieces)": { protein: 27, calories: 260 },
+                "Diet Lemonade (Medium)": { protein: 0, calories: 50 },
+                "Sweet Tea (Medium)": { protein: 0, calories: 100 },
+                "Chocolate Milkshake (Medium)": { protein: 13, calories: 590 },
+                "Chicken Biscuit": { protein: 17, calories: 460 },
+                "Hash Browns": { protein: 3, calories: 240 },
+                "Chick-fil-A Deluxe Sandwich": { protein: 28, calories: 500 },
+                "Grilled Chicken Club Sandwich": { protein: 36, calories: 430 },
+                "Market Salad with Grilled Chicken": { protein: 27, calories: 330 },
+                "Spicy Southwest Salad with Grilled Chicken": { protein: 34, calories: 340 },
+                "Cobb Salad with Grilled Chicken Nuggets": { protein: 37, calories: 400 },
+                "Side Salad": { protein: 5, calories: 160 },
+                "Chicken Noodle Soup (Medium)": { protein: 13, calories: 140 },
+                "Fruit Cup (Small)": { protein: 1, calories: 50 },
+                "Icedream Cone": { protein: 4, calories: 170 },
+                "Chocolate Chunk Cookie": { protein: 4, calories: 330 },
+                "Chicken Minis (4 pcs)": { protein: 19, calories: 370 },
+            },
+        };
 
-                document.getElementById('results').innerHTML = `
-                    <p>Protein: ${protein.toFixed(1)}g</p>
-                    <p>Fat: ${fat.toFixed(1)}g</p>
-                    <p>Carbs: ${carbs.toFixed(1)}g</p>
-                `;
-            } else {
-                document.getElementById('results').innerHTML = '<p>Please enter a calorie goal.</p>';
+        // Function to dynamically populate menu items based on the selected restaurant
+        document.getElementById('restaurant').addEventListener('change', function () {
+            const restaurant = this.value;
+            const menuItemsDiv = document.getElementById('menuItems');
+            menuItemsDiv.innerHTML = '';
+
+            const menuItems = menuData[restaurant];
+            const label = document.createElement('label');
+            label.innerText = `Choose an item:`;
+
+            const select = document.createElement('select');
+            select.id = 'menuItem';
+            for (const menuItem in menuItems) {
+                const option = document.createElement('option');
+                option.value = menuItem;
+                option.innerText = menuItem;
+                select.appendChild(option);
             }
+            menuItemsDiv.appendChild(label);
+            menuItemsDiv.appendChild(select);
+        });
+
+        // Function to calculate macros based on user input
+        function calculateMacros() {
+            const restaurant = document.getElementById('restaurant').value;
+            const menuItem = document.getElementById('menuItem').value;
+            const servings = parseInt(document.getElementById('servings').value);
+
+            const foodMacros = menuData[restaurant][menuItem];
+
+            const totalProtein = (foodMacros.protein * servings);
+            const totalCalories = (foodMacros.calories * servings);
+
+            const results = `Your meal contains ${totalProtein.toFixed(2)}g of protein and ${totalCalories} calories.`;
+            document.getElementById('results').innerText = results;
         }
     </script>
+
 </body>
 </html>
