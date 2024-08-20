@@ -4,17 +4,88 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>justfornow.ca</title>
-    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #add8e6;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            width: 90%;
+            max-width: 1200px;
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .news-section {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+        }
+
+        nav {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-size: 1.2rem;
+            background-color: #add8e6;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-align: center;
+            border: 2px solid white;
+        }
+
+        nav a:hover {
+            background-color: #87ceeb;
+        }
+
+        iframe {
+            width: 100%;
+            height: 500px;
+            border: none;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
 </head>
 <body>
     <div class="container">
-        <h1>justfornow.ca</h1>
-        <nav>
-            <a href="macro-calculator.html">Macro Calculator</a>
-            <a href="gpa-calculator.html">GPA Calculator</a>
-            <a href="number-game.html">Number Game</a>
-            <a href="music-player.html">Music Player</a>
-        </nav>
+        <!-- News Section -->
+        <div class="news-section">
+            <h2>Daily Canadian News</h2>
+            <iframe src="https://www.cbc.ca/widgets/news/" title="CBC News"></iframe>
+        </div>
+
+        <!-- Navigation Section -->
+        <div>
+            <h1>justfornow.ca</h1>
+            <nav>
+                <a href="macro-calculator.html">Macro Calculator</a>
+                <a href="gpa-calculator.html">GPA Calculator</a>
+                <a href="number-game.html">Number Game</a>
+                <a href="music-player.html">Music Player</a>
+            </nav>
+        </div>
     </div>
 </body>
 </html>
