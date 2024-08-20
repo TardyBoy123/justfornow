@@ -7,17 +7,18 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #cce7f0;
             margin: 0;
             padding: 20px;
         }
         h1, h2 {
             text-align: center;
+            color: #fff;
         }
         form {
             max-width: 600px;
             margin: 0 auto;
-            background: #fff;
+            background: #ffffff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0,0,0,0.1);
@@ -44,6 +45,23 @@
         button:hover {
             background-color: #218838;
         }
+        #homeButton {
+            background-color: #99cfe0;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+        }
+        #homeButton:hover {
+            background-color: #79afc0;
+        }
         #results {
             font-size: 18px;
             font-weight: bold;
@@ -54,6 +72,9 @@
 <body>
 
     <h1>Fast Food Macro Calculator</h1>
+
+    <a id="homeButton" href="index.html">Home</a> <!-- Home button -->
+
     <form id="macroForm">
         <label for="restaurant">Choose a restaurant:</label>
         <select id="restaurant" name="restaurant" required>
@@ -69,17 +90,23 @@
         <label for="servings">How many servings?</label>
         <input type="number" id="servings" name="servings" value="1" min="1" required>
 
-        <button type="button" onclick="calculateMacros()">Calculate Macros</button>
+        <button type="button" onclick="addItem()">Add Item</button>
+
+        <h2>Your Meal:</h2>
+        <ul id="mealList"></ul>
+
+        <button type="button" onclick="calculateTotal()">Calculate Total Macros</button>
     </form>
 
     <h2>Results</h2>
     <p id="results"></p>
 
     <script>
+        let meal = [];
+
         // Full menu data for each restaurant with every item from McDonald's, Popeyes, Mary Brown's, and Chick-fil-A
         const menuData = {
             mcdonalds: {
-                // A La Carte
                 "Big Mac": { protein: 25, calories: 524 },
                 "Quarter Pounder with Cheese": { protein: 30, calories: 544 },
                 "McChicken": { protein: 14, calories: 420 },
@@ -89,6 +116,7 @@
                 "Chicken McNuggets (10 pieces)": { protein: 23, calories: 440 },
                 "Medium Fries": { protein: 7, calories: 340 },
                 "Large Fries": { protein: 10, calories: 510 },
+                "Small Fries": { protein: 3, calories: 230 },
                 "Coca Cola (Medium)": { protein: 0, calories: 210 },
                 "Sprite (Medium)": { protein: 0, calories: 210 },
                 "Fanta (Medium)": { protein: 0, calories: 220 },
@@ -101,22 +129,6 @@
                 "Hash Browns": { protein: 2, calories: 150 },
                 "Pancakes with Syrup": { protein: 8, calories: 350 },
                 "Chicken McGriddle": { protein: 14, calories: 390 },
-                // Drinks
-                "Medium Coffee": { protein: 1, calories: 0 },
-                "Large Coffee": { protein: 1, calories: 0 },
-                "Medium Iced Coffee": { protein: 1, calories: 140 },
-                "Large Iced Coffee": { protein: 1, calories: 170 },
-                "Water (500ml)": { protein: 0, calories: 0 },
-                "Orange Juice (Medium)": { protein: 1, calories: 140 },
-                "Milk (Small)": { protein: 8, calories: 150 },
-                "Chocolate Milk (Small)": { protein: 8, calories: 160 },
-                // Desserts
-                "Vanilla Cone": { protein: 5, calories: 200 },
-                "Chocolate Chip Cookie": { protein: 2, calories: 170 },
-                "Baked Apple Pie": { protein: 2, calories: 230 },
-                "Caramel Sundae": { protein: 7, calories: 340 },
-                "Strawberry Sundae": { protein: 7, calories: 280 },
-                "Hot Caramel Sundae": { protein: 7, calories: 340 },
             },
             popeyes: {
                 "Chicken Sandwich (Classic)": { protein: 28, calories: 699 },
@@ -181,7 +193,9 @@
             chickfila: {
                 "Chick-fil-A Chicken Sandwich": { protein: 29, calories: 440 },
                 "Chick-fil-A Spicy Chicken Sandwich": { protein: 28, calories: 490 },
+                "Waffle Fries (Small)": { protein: 2, calories: 220 },
                 "Waffle Fries (Medium)": { protein: 4, calories: 360 },
+                "Waffle Fries (Large)": { protein: 6, calories: 520 },
                 "Grilled Chicken Sandwich": { protein: 28, calories: 320 },
                 "Chicken Nuggets (8 pieces)": { protein: 27, calories: 260 },
                 "Diet Lemonade (Medium)": { protein: 0, calories: 50 },
@@ -225,18 +239,35 @@
             menuItemsDiv.appendChild(select);
         });
 
-        // Function to calculate macros based on user input
-        function calculateMacros() {
+        // Function to add item to the meal list
+        function addItem() {
             const restaurant = document.getElementById('restaurant').value;
             const menuItem = document.getElementById('menuItem').value;
             const servings = parseInt(document.getElementById('servings').value);
 
             const foodMacros = menuData[restaurant][menuItem];
-
             const totalProtein = (foodMacros.protein * servings);
             const totalCalories = (foodMacros.calories * servings);
 
-            const results = `Your meal contains ${totalProtein.toFixed(2)}g of protein and ${totalCalories} calories.`;
+            meal.push({ item: menuItem, protein: totalProtein, calories: totalCalories });
+
+            const mealList = document.getElementById('mealList');
+            const listItem = document.createElement('li');
+            listItem.innerText = `${menuItem} - ${totalProtein.toFixed(2)}g protein, ${totalCalories} calories (x${servings})`;
+            mealList.appendChild(listItem);
+        }
+
+        // Function to calculate total macros
+        function calculateTotal() {
+            let totalProtein = 0;
+            let totalCalories = 0;
+
+            meal.forEach(function(food) {
+                totalProtein += food.protein;
+                totalCalories += food.calories;
+            });
+
+            const results = `Your meal contains a total of ${totalProtein.toFixed(2)}g of protein and ${totalCalories} calories.`;
             document.getElementById('results').innerText = results;
         }
     </script>
