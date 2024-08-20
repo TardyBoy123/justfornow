@@ -21,6 +21,11 @@
         .container {
             max-width: 600px;
             width: 100%;
+            position: relative;
+        }
+        .homeButtonContainer {
+            text-align: center;
+            margin-bottom: 10px;
         }
         form {
             background: #ffffff;
@@ -40,20 +45,18 @@
             border-radius: 5px;
             border: 2px solid #ffffff;
             font-size: 16px;
-            background-color: #99cfe0;
-            color: #ffffff;
             cursor: pointer;
         }
         button {
-            background-color: #99cfe0;
+            background-color: #218838; /* Updated button color */
             color: #fff;
             border: 2px solid #fff;
             cursor: pointer;
             transition: background-color 0.3s, border-color 0.3s;
         }
         button:hover {
-            background-color: #cce7f0;
-            border-color: #99cfe0;
+            background-color: #196f31; /* Darken on hover */
+            border-color: #218838;
         }
         #homeButton {
             background-color: #99cfe0;
@@ -61,7 +64,7 @@
             border: 2px solid #fff;
             cursor: pointer;
             padding: 10px;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
             border-radius: 5px;
             text-align: center;
             text-decoration: none;
@@ -86,7 +89,9 @@
     <h1>Fast Food Macro Calculator</h1>
 
     <div class="container">
-        <a id="homeButton" href="index.html">Home</a> <!-- Home button -->
+        <div class="homeButtonContainer">
+            <a id="homeButton" href="index.html">Home</a> <!-- Home button -->
+        </div>
 
         <form id="macroForm">
             <label for="restaurant">Choose a restaurant:</label>
