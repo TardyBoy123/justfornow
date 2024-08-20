@@ -35,23 +35,32 @@
         .news-item a:hover {
             text-decoration: underline;
         }
+
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
         <h1>justfornow.ca</h1>
+
+        <!-- News Section Directly Below the Header -->
+        <div class="news-container">
+            <h2>Daily Canadian News</h2>
+            <div id="newsFeed"></div>
+        </div>
+
+        <!-- Navigation Links Below the News Section -->
         <nav>
             <a href="macro-calculator.html">Macro Calculator</a>
             <a href="gpa-calculator.html">GPA Calculator</a>
             <a href="number-game.html">Number Game</a>
             <a href="music-player.html">Music Player</a>
         </nav>
-    </div>
-
-    <!-- News Section Below Navigation -->
-    <div class="news-container">
-        <h2>Daily Canadian News</h2>
-        <div id="newsFeed"></div>
     </div>
 
     <script>
