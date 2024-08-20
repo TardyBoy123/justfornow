@@ -4,38 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>justfornow.ca</title>
+    <link rel="stylesheet" href="styles.css">
     <style>
-        body {
-            background-color: #add8e6;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            text-align: center;
-        }
-
-        nav {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin-bottom: 40px;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: white;
-            font-size: 1.2rem;
-        }
-
         .news-container {
             width: 90%;
             max-width: 800px;
@@ -45,6 +15,11 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
             text-align: left;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+        }
+
+        .news-container h2 {
+            margin-bottom: 10px;
         }
 
         .news-item {
@@ -63,15 +38,15 @@
     </style>
 </head>
 <body>
-    <h1>justfornow.ca</h1>
-
-    <!-- Navigation Links -->
-    <nav>
-        <a href="macro-calculator.html">Macro Calculator</a>
-        <a href="gpa-calculator.html">GPA Calculator</a>
-        <a href="number-game.html">Number Game</a>
-        <a href="music-player.html">Music Player</a>
-    </nav>
+    <div class="container">
+        <h1>justfornow.ca</h1>
+        <nav>
+            <a href="macro-calculator.html">Macro Calculator</a>
+            <a href="gpa-calculator.html">GPA Calculator</a>
+            <a href="number-game.html">Number Game</a>
+            <a href="music-player.html">Music Player</a>
+        </nav>
+    </div>
 
     <!-- News Section Below Navigation -->
     <div class="news-container">
