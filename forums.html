@@ -33,10 +33,6 @@
             margin-bottom: 20px;
         }
 
-        #disqus_thread {
-            margin-top: 20px;
-        }
-
         .btn {
             background-color: #add8e6;
             padding: 10px 20px;
@@ -55,6 +51,35 @@
 
         .btn:hover {
             background-color: #87ceeb;
+        }
+
+        .comment-form, .comments-section {
+            margin-top: 20px;
+        }
+
+        textarea {
+            width: 100%;
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .comment {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .comment p {
+            margin: 0;
+            font-size: 1rem;
+            color: #333;
         }
 
         #audio-controls {
@@ -80,23 +105,17 @@
         <!-- Home Button -->
         <a href="index.html" class="btn">Home</a>
 
-        <!-- Disqus integration -->
-        <div id="disqus_thread"></div>
-        <script>
-        var disqus_config = function () {
-            this.page.url = window.location.href;  // Page's canonical URL
-            this.page.identifier = document.title; // Unique identifier for the page
-        };
-        
-        (function() { // DON'T EDIT BELOW THIS LINE
-            var d = document, s = d.createElement('script');
-            s.src = 'https://justfornow-ca.disqus.com/embed.js';
-            s.setAttribute('data-timestamp', +new Date());
-            (d.head || d.body).appendChild(s);
-        })();
-        </script>
-        <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
-        <!-- End of Disqus integration -->
+        <!-- Anonymous Comment Form -->
+        <div class="comment-form">
+            <h2>Leave a Comment</h2>
+            <textarea id="commentText" placeholder="Enter your comment here..."></textarea>
+            <button class="btn" onclick="addComment()">Post Comment</button>
+        </div>
+
+        <!-- Comments Section -->
+        <div class="comments-section" id="commentsSection">
+            <h2>Comments</h2>
+        </div>
 
         <!-- Music Player -->
         <div id="audio-controls">
@@ -107,5 +126,26 @@
             <p>Now playing - Lana Del Rey - Summertime Sadness</p>
         </div>
     </div>
+
+    <script>
+        // JavaScript for adding comments
+        function addComment() {
+            const commentText = document.getElementById('commentText').value.trim();
+            if (commentText === '') {
+                alert('Please enter a comment');
+                return;
+            }
+
+            const commentSection = document.getElementById('commentsSection');
+            const comment = document.createElement('div');
+            comment.classList.add('comment');
+            comment.innerHTML = `<p>${commentText}</p>`;
+            
+            commentSection.appendChild(comment);
+
+            // Clear the textarea
+            document.getElementById('commentText').value = '';
+        }
+    </script>
 </body>
 </html>
