@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forums - justfornow.ca</title>
+    <title>Number Guessing Game - justfornow.ca</title>
     <style>
         body {
             background-color: #add8e6;
@@ -24,10 +24,10 @@
             padding: 20px;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
         }
 
         h1 {
-            text-align: center;
             color: #333;
             font-size: 2rem;
             margin-bottom: 20px;
@@ -44,7 +44,7 @@
             font-family: 'Comic Sans MS', cursive, sans-serif;
             font-weight: bold;
             color: white;
-            border: 2px solid white; 
+            border: 2px solid white;
             display: inline-block;
             text-decoration: none;
         }
@@ -53,32 +53,19 @@
             background-color: #87ceeb;
         }
 
-        .comment-form, .comments-section {
-            margin-top: 20px;
-        }
-
-        textarea {
-            width: 100%;
+        input[type="number"] {
             padding: 10px;
-            border-radius: 5px;
-            border: 1px solid #ccc;
-            font-family: 'Comic Sans MS', cursive, sans-serif;
             font-size: 1rem;
-            resize: vertical;
-            min-height: 100px;
+            border-radius: 5px;
+            border: 2px solid #add8e6;
+            width: 100%;
+            max-width: 200px;
+            margin-bottom: 20px;
         }
 
-        .comment {
-            background-color: #f9f9f9;
-            padding: 15px;
-            border-radius: 5px;
-            margin-bottom: 10px;
-            border: 1px solid #ddd;
-        }
-
-        .comment p {
-            margin: 0;
-            font-size: 1rem;
+        #result {
+            font-size: 1.2rem;
+            margin-top: 20px;
             color: #333;
         }
 
@@ -100,22 +87,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>Forums</h1>
-        
+        <h1>Number Guessing Game</h1>
+
         <!-- Home Button -->
         <a href="index.html" class="btn">Home</a>
 
-        <!-- Anonymous Comment Form -->
-        <div class="comment-form">
-            <h2>Leave a Comment</h2>
-            <textarea id="commentText" placeholder="Enter your comment here..."></textarea>
-            <button class="btn" onclick="addComment()">Post Comment</button>
-        </div>
+        <!-- Game Instructions -->
+        <p>Guess a number between 1 and 100!</p>
 
-        <!-- Comments Section -->
-        <div class="comments-section" id="commentsSection">
-            <h2>Comments</h2>
-        </div>
+        <!-- Input and Button -->
+        <input type="number" id="guessInput" min="1" max="100" placeholder="Enter your guess">
+        <button class="btn" onclick="checkGuess()">Guess</button>
+
+        <!-- Result Display -->
+        <div id="result"></div>
 
         <!-- Music Player -->
         <div id="audio-controls">
@@ -128,23 +113,26 @@
     </div>
 
     <script>
-        // JavaScript for adding comments
-        function addComment() {
-            const commentText = document.getElementById('commentText').value.trim();
-            if (commentText === '') {
-                alert('Please enter a comment');
-                return;
+        // JavaScript for Number Guessing Game
+
+        // Generate a random number between 1 and 100
+        const randomNumber = Math.floor(Math.random() * 100) + 1;
+
+        function checkGuess() {
+            const guess = parseInt(document.getElementById('guessInput').value);
+            const result = document.getElementById('result');
+
+            if (isNaN(guess)) {
+                result.textContent = "Please enter a valid number!";
+            } else if (guess < 1 || guess > 100) {
+                result.textContent = "Your guess must be between 1 and 100!";
+            } else if (guess < randomNumber) {
+                result.textContent = "Too low! Try again.";
+            } else if (guess > randomNumber) {
+                result.textContent = "Too high! Try again.";
+            } else {
+                result.textContent = `Congratulations! You guessed the correct number: ${randomNumber}`;
             }
-
-            const commentSection = document.getElementById('commentsSection');
-            const comment = document.createElement('div');
-            comment.classList.add('comment');
-            comment.innerHTML = `<p>${commentText}</p>`;
-            
-            commentSection.appendChild(comment);
-
-            // Clear the textarea
-            document.getElementById('commentText').value = '';
         }
     </script>
 </body>
