@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Character Counter</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .counter-container {
+            background-color: #add8e6;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border: 2px solid white;
+            text-align: center;
+            width: 100%;
+        }
+
+        textarea {
+            width: 80%;
+            height: 100px;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        #charCount {
+            font-family: 'Comic Sans MS', cursive, sans-serif;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 20px;
+        }
+
+        button {
+            background-color: #4F2683;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 1rem;
+            margin: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #4F2683;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="home-box">
+        <button class="btn" onclick="window.location.href='index.html'">Home</button>
+    </div>
+
+    <div class="counter-container">
+        <h1>Character Counter</h1>
+        <textarea id="textInput" placeholder="Type something..."></textarea>
+        <div id="charCount">Character Count: 0</div>
+    </div>
+
+    <script>
+        document.getElementById('textInput').addEventListener('input', function () {
+            var text = this.value;
+            var charCount = text.length;
+            document.getElementById('charCount').innerText = 'Character Count: ' + charCount;
+        });
+    </script>
+</body>
+</html>
