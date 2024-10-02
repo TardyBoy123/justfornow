@@ -4,9 +4,10 @@ body {
     background-color: #ADD8E6;
     color: white;
     display: flex;
-    justify-content: center;
+    flex-direction: column; /* Update to allow scrolling */
+    justify-content: flex-start; /* Adjust for gallery content */
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
 }
 
 .container {
@@ -15,7 +16,7 @@ body {
 
 h1 {
     font-size: 3em;
-    margin-bottom: 20px;
+    margin: 20px 0;
 }
 
 nav a {
@@ -27,4 +28,25 @@ nav a {
 
 nav a:hover {
     text-decoration: underline;
+}
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Create responsive columns */
+    gap: 20px; /* Space between video items */
+    padding: 20px;
+    width: 100%; /* Ensure it fills the screen */
+    max-width: 1200px; /* Limit max width for better view on large screens */
+    margin: 0 auto; /* Center the gallery */
+}
+
+.video-item {
+    display: flex;
+    justify-content: center;
+}
+
+video {
+    max-width: 100%;
+    height: auto;
+    border: 3px solid white; /* Add a border to the videos */
 }
