@@ -3,7 +3,8 @@ body {
     font-family: Arial, sans-serif;
     background-color: #ADD8E6;
     color: white;
-    display: block; /* Changed from flex to block for proper grid layout */
+    display: block; /* Change flex to block */
+    min-height: 100vh;
 }
 
 .container {
@@ -26,13 +27,14 @@ nav a:hover {
     text-decoration: underline;
 }
 
+/* Grid layout for video gallery */
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Ensures videos spread evenly */
-    gap: 20px; /* Space between video items */
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Create responsive columns */
+    gap: 20px; /* Add space between video items */
     padding: 20px;
-    width: 100%; /* Full width of the page */
-    max-width: 1200px; /* Limit max width on larger screens */
+    width: 100%; /* Make sure the gallery uses full width */
+    max-width: 1200px; /* Limit maximum width */
     margin: 0 auto; /* Center the gallery */
 }
 
@@ -42,7 +44,7 @@ nav a:hover {
 }
 
 video {
-    max-width: 100%;
+    width: 100%; /* Make video take up the full width of its container */
     height: auto;
-    border: 3px solid white; /* Add a border to the videos */
+    border: 3px solid white;
 }
