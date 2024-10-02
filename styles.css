@@ -3,11 +3,7 @@ body {
     font-family: Arial, sans-serif;
     background-color: #ADD8E6;
     color: white;
-    display: flex;
-    flex-direction: column; /* Update to allow scrolling */
-    justify-content: flex-start; /* Adjust for gallery content */
-    align-items: center;
-    min-height: 100vh;
+    display: block; /* Changed from flex to block for proper grid layout */
 }
 
 .container {
@@ -32,11 +28,11 @@ nav a:hover {
 
 .gallery {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); /* Create responsive columns */
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); /* Ensures videos spread evenly */
     gap: 20px; /* Space between video items */
     padding: 20px;
-    width: 100%; /* Ensure it fills the screen */
-    max-width: 1200px; /* Limit max width for better view on large screens */
+    width: 100%; /* Full width of the page */
+    max-width: 1200px; /* Limit max width on larger screens */
     margin: 0 auto; /* Center the gallery */
 }
 
