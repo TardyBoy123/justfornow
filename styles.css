@@ -7,7 +7,7 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    height: 100vh; /* Ensure it takes the full viewport height */
+    min-height: 100vh;
 }
 
 .container {
@@ -36,24 +36,26 @@ nav a:hover {
     text-decoration: underline;
 }
 
-/* Grid layout for video gallery */
 .gallery {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Create responsive columns */
-    gap: 20px; /* Add space between video items */
+    gap: 20px;
     padding: 20px;
-    width: 100%; /* Make sure the gallery uses full width */
-    max-width: 1200px; /* Limit maximum width */
-    margin: 0 auto; /* Center the gallery */
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .video-item {
     display: flex;
     justify-content: center;
+    border: 3px solid white; /* Ensure the white box wraps around the videos */
+    padding: 10px; /* Add some padding around the video */
 }
 
 video {
-    width: 100%; /* Make video take up the full width of its container */
+    width: 100%;
     height: auto;
-    border: 3px solid white;
+    border: none; /* Remove any border/outline on the video */
+    outline: none; /* Remove the blue outline around focused elements */
 }
