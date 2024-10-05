@@ -23,7 +23,8 @@ h1 {
 nav {
     display: flex;
     justify-content: center;
-    gap: 15px; /* Add space between links */
+    gap: 15px;
+    margin-bottom: 20px; /* Adds space below the home button */
 }
 
 nav a {
@@ -34,30 +35,6 @@ nav a {
 
 nav a:hover {
     text-decoration: underline;
-}
-
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Create responsive columns */
-    gap: 20px;
-    padding: 20px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-}
-
-.video-item {
-    display: flex;
-    justify-content: center;
-    border: 3px solid white; /* Ensure the white box wraps around the videos */
-    padding: 10px; /* Add some padding around the video */
-}
-
-video {
-    width: 100%;
-    height: auto;
-    border: none; /* Remove any border/outline on the video */
-    outline: none; /* Remove the blue outline around focused elements */
 }
 
 .typing-test-container {
@@ -84,4 +61,8 @@ button {
     padding: 10px 20px;
     font-size: 1em;
     cursor: pointer;
+}
+
+p {
+    font-size: 1.2em;
 }
