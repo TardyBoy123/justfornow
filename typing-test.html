@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Test</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Typing Test</h1>
+        <div class="typing-test-container">
+            <h2>Typing Test</h2>
+            <label for="test-time">Choose your test time:</label>
+            <select id="test-time">
+                <option value="15">15 seconds</option>
+                <option value="30">30 seconds</option>
+            </select>
+            <button id="start-test">Start Test</button>
+
+            <div id="typing-area" class="hidden">
+                <p id="text-to-type">The quick brown fox jumps over the lazy dog.</p>
+                <textarea id="typed-text" placeholder="Start typing..."></textarea>
+                <p>Time left: <span id="time-left"></span> seconds</p>
+            </div>
+
+            <div id="result" class="hidden">
+                <p>Words typed: <span id="word-count"></span></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="typing-test.js"></script>
+</body>
+</html>
