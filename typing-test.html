@@ -9,8 +9,12 @@
 <body>
     <div class="container">
         <h1>Typing Test</h1>
+
+        <nav>
+            <a href="index.html">Home</a> <!-- Home button added -->
+        </nav>
+
         <div class="typing-test-container">
-            <h2>Typing Test</h2>
             <label for="test-time">Choose your test time:</label>
             <select id="test-time">
                 <option value="15">15 seconds</option>
@@ -19,7 +23,7 @@
             <button id="start-test">Start Test</button>
 
             <div id="typing-area" class="hidden">
-                <p id="text-to-type"></p> <!-- Empty initially, filled with random text -->
+                <p id="text-to-type"></p> <!-- Random text generated here -->
                 <textarea id="typed-text" placeholder="Start typing..."></textarea>
                 <p>Time left: <span id="time-left"></span> seconds</p>
             </div>
