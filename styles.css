@@ -59,3 +59,29 @@ video {
     border: none; /* Remove any border/outline on the video */
     outline: none; /* Remove the blue outline around focused elements */
 }
+
+.typing-test-container {
+    margin-top: 30px;
+    text-align: center;
+}
+
+#typing-area {
+    margin-top: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+textarea {
+    width: 80%;
+    height: 100px;
+    font-size: 1.2em;
+    margin: 20px 0;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1em;
+    cursor: pointer;
+}
