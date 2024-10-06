@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-image: url('1349540.png'); /* Replace with correct image path */
+    background-image: url('BRBvtCM.jpeg'); /* Replace with correct image path */
     background-size: cover;  /* Ensure image covers the entire background */
     background-position: center;  /* Center the image */
     background-repeat: no-repeat;  /* No image repetition */
@@ -20,7 +20,7 @@ body {
     background-color: rgba(0, 0, 0, 0.5); /* Slight transparent black background for readability */
     padding: 20px;
     border-radius: 10px;
-    max-width: 800px;
+    max-width: 1000px; /* Increased the max-width to fit all buttons */
     width: 100%;
 }
 
@@ -34,12 +34,13 @@ h1 {
 /* Navigation Bar */
 nav {
     display: flex;
-    justify-content: center;
+    justify-content: space-around; /* Ensure even space between buttons */
     gap: 20px;
-    flex-wrap: nowrap; /* Ensure all buttons are in one line */
     background-color: rgba(0, 0, 0, 0.5); /* Extend grey box behind the buttons */
-    padding: 20px 40px; /* Add some padding to make the grey box larger */
+    padding: 20px 50px; /* Add more padding */
     border-radius: 10px; /* Rounded corners for the grey box */
+    width: 100%;
+    max-width: 1000px; /* Ensures it stretches wide enough */
 }
 
 /* Navigation Links */
