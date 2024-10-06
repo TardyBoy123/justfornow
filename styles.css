@@ -4,34 +4,64 @@ body {
     background-color: #ADD8E6;
     color: white;
     display: flex;
-    justify-content: center;  /* Horizontally center content */
-    align-items: center;      /* Vertically center content */
-    height: 100vh;            /* Full viewport height to center vertically */
+    justify-content: center;  
+    align-items: center;      
+    height: 100vh;            
     text-align: center;
+    flex-direction: column; /* Stack the header and content vertically */
 }
 
 .container {
     max-width: 1200px;
     width: 100%;
+    padding: 20px; /* Add some padding for better spacing */
 }
 
-h1 {
-    font-size: 3em;
-    margin: 20px 0;
+header {
+    font-size: 2.5em;
+    font-weight: bold;
+    margin-bottom: 20px;
 }
 
 nav {
     display: flex;
-    justify-content: center; /* Center the navigation links */
-    gap: 15px;               /* Space between navigation links */
+    justify-content: center; 
+    gap: 15px;               
+    flex-wrap: wrap; /* Allows links to wrap around */
+    margin-bottom: 20px; /* Add space below the nav */
 }
 
 nav a {
     color: white;
     text-decoration: none;
     font-size: 1.5em;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: #4682B4; /* Slight background color for links */
 }
 
 nav a:hover {
-    text-decoration: underline;
+    background-color: #5A9BD4; /* Change on hover */
+    text-decoration: none;
+}
+
+.section-wrapper {
+    display: flex;
+    flex-wrap: wrap; /* Wrap sections for responsive layout */
+    justify-content: space-around;
+    width: 100%;
+}
+
+.section {
+    background-color: #4682B4;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 10px;
+    width: 300px; /* Set a fixed width for the sections */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
 }
