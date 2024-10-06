@@ -2,7 +2,7 @@
 body {
     margin: 0;
     font-family: 'Arial', sans-serif;
-    background-image: url('BRBvtCM.jpeg'); /* Replace with correct image path */
+    background-image: url('https://github.com/TardyBoy123/justfornow/raw/main/BRBvtCM.jpeg'); /* Full GitHub URL to the image */
     background-size: cover;  /* Ensure image covers the entire background */
     background-position: center;  /* Center the image */
     background-repeat: no-repeat;  /* No image repetition */
