@@ -3,12 +3,16 @@ body {
     font-family: Arial, sans-serif;
     background-color: #ADD8E6;
     color: white;
+    display: flex;
+    justify-content: center;  /* Horizontally center content */
+    align-items: center;      /* Vertically center content */
+    height: 100vh;            /* Full viewport height to center vertically */
     text-align: center;
 }
 
 .container {
     max-width: 1200px;
-    margin: 0 auto;
+    width: 100%;
 }
 
 h1 {
@@ -18,9 +22,8 @@ h1 {
 
 nav {
     display: flex;
-    justify-content: center;
-    gap: 15px;
-    margin-bottom: 20px;
+    justify-content: center; /* Center the navigation links */
+    gap: 15px;               /* Space between navigation links */
 }
 
 nav a {
@@ -31,44 +34,4 @@ nav a {
 
 nav a:hover {
     text-decoration: underline;
-}
-
-/* Gallery Styles */
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* 3 Columns */
-    gap: 20px; /* Space between items */
-    padding: 20px;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    justify-items: center; /* Centers the video items */
-}
-
-.video-item {
-    display: flex;
-    justify-content: center;
-    width: 100%; /* Ensures the video item fits within the grid column */
-    border: 3px solid white;
-    padding: 10px;
-    background-color: #ADD8E6;
-}
-
-video {
-    width: 100%;
-    height: auto;
-    border: none;
-    outline: none;
-}
-
-@media (max-width: 768px) {
-    .gallery {
-        grid-template-columns: repeat(2, 1fr); /* 2 columns on smaller screens */
-    }
-}
-
-@media (max-width: 480px) {
-    .gallery {
-        grid-template-columns: 1fr; /* 1 column on very small screens */
-    }
 }
