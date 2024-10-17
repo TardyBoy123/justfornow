@@ -12,25 +12,25 @@ body {
     justify-content: center;
     align-items: center;
     text-align: center;
-    font-size: 14px; /* Made the font smaller */
+    font-size: 14px;
 }
 
 /* Container for Main Content */
 .container {
-    background-color: rgba(0, 0, 0, 0.5); /* Slight transparent black background */
-    padding: 30px; /* Increased padding for better wrapping */
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 30px;
     border-radius: 10px;
     max-width: 800px;
     width: 100%;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Center the content */
+    align-items: center;
     justify-content: center;
 }
 
 /* Main Title */
 h1 {
-    font-size: 3em; /* Adjusted font size to be a bit smaller */
+    font-size: 3em;
     margin-bottom: 20px;
     z-index: 2;
 }
@@ -40,20 +40,20 @@ nav {
     display: flex;
     justify-content: center;
     gap: 20px;
-    flex-wrap: wrap; /* Allow navigation to wrap if necessary */
+    flex-wrap: wrap;
     background-color: rgba(0, 0, 0, 0.5);
     padding: 20px 40px;
     border-radius: 10px;
-    width: 100%; /* Ensure nav takes full width of the container */
+    width: 100%;
     max-width: 800px;
-    margin-bottom: 20px; /* Added margin to separate from content below */
+    margin-bottom: 20px;
 }
 
 /* Navigation Links */
 nav a {
     color: white;
     text-decoration: none;
-    font-size: 1.2em; /* Slightly smaller font for navigation */
+    font-size: 1.2em;
     transition: background-color 0.3s ease;
     padding: 10px 15px;
 }
@@ -62,24 +62,24 @@ nav a:hover {
     background-color: rgba(255, 255, 255, 0.2);
 }
 
-/* Specific Component Styles */
-.calculator, .number-game, .gpa-calc {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-radius: 10px;
-    padding: 20px;
-    margin-bottom: 20px;
-    width: 90%; /* Adjust width to fit within the container */
-    max-width: 600px;
-    text-align: center;
+/* Gallery Grid Layout */
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columns */
+    gap: 20px; /* Space between the video items */
+    margin-top: 20px;
 }
 
-/* Contact Section */
-.contact {
-    background-color: rgba(255, 255, 255, 0.1); /* Consistent styling with other components */
-    border-radius: 10px;
-    padding: 20px;
-    margin-top: 20px; /* Add margin to separate from other content */
-    width: 90%;
-    max-width: 600px;
-    text-align: center;
+/* Style for each video item */
+.video-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+video {
+    width: 100%;
+    height: auto;
+    max-width: 320px;
+    max-height: 240px;
 }
