@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="sand.css">
+        <title>Falling Sand</title>
+    </head>
+    <body>
+        <div>
+            <canvas id="canvas"></canvas>
+        </div>
+
+        <!-- Controls Section -->
+        <div id="controls">
+            <label for="grainSize">Grain Size: </label>
+            <input type="range" id="grainSize" min="1" max="10" value="2">
+            <span id="grainSizeValue">2</span>px
+
+            <br>
+
+            <label for="hueSpeed">Hue Speed: </label>
+            <input type="range" id="hueSpeed" min="1" max="50" value="1">
+            <span id="hueSpeedValue">1</span>
+
+            <br>
+
+            <label for="spawnAmount">Sand Spawn Amount: </label>
+            <input type="range" id="spawnAmount" min="1" max="10" value="3">
+            <span id="spawnAmountValue">3</span>
+
+            <br>
+
+            <button id="clearCanvas">Clear Canvas</button>
+        </div>
+
+        <script src="sand.js"></script>
+    </body>
+</html>
