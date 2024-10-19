@@ -51,7 +51,6 @@ document.getElementById('clearCanvas').addEventListener('click', function() {
 // Background image toggle functionality
 document.getElementById('backgroundImage').addEventListener('change', function() {
     backgroundEnabled = this.checked;  // Enable or disable background based on checkbox
-    draw();  // Redraw the canvas to reflect the background change
 });
 
 function make2DArray(cols, rows) {
@@ -188,7 +187,7 @@ function draw() {
     // Update the grid for the next frame
     grid = nextGrid;
 
-    // Call draw function continuously
+    // Call draw function continuously using requestAnimationFrame
     requestAnimationFrame(draw);
 }
 
