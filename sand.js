@@ -15,6 +15,10 @@ let mouseX = 0, mouseY = 0;
 let spawnAmount = 3;  // Number of sand grains spawned
 let hueUpdateInterval = 100;  // Number of frames before hue changes
 let frameCounter = 0;  // Counter to slow down hue speed
+let backgroundImage = new Image();  // Image object for background
+let backgroundEnabled = false;  // Flag to track if background is enabled
+
+backgroundImage.src = "cate.jpg";  // Path to the image
 
 // Update grid size when grain size is changed
 document.getElementById('grainSize').addEventListener('input', function() {
@@ -42,6 +46,12 @@ document.getElementById('spawnAmount').addEventListener('input', function() {
 document.getElementById('clearCanvas').addEventListener('click', function() {
     grid = make2DArray(cols, rows);  // Clear the grid
     ctx.clearRect(0, 0, canvas.width, canvas.height);  // Clear canvas
+});
+
+// Background image toggle functionality
+document.getElementById('backgroundImage').addEventListener('change', function() {
+    backgroundEnabled = this.checked;  // Enable or disable background based on checkbox
+    draw();  // Redraw the canvas to reflect the background change
 });
 
 function make2DArray(cols, rows) {
@@ -122,7 +132,12 @@ function withinRows(j) {
 }
 
 function draw() {
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Draw the background image if the checkbox is checked
+    if (backgroundEnabled) {
+        ctx.drawImage(backgroundImage, 0, 0, canvas.width, canvas.height);
+    } else {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 
     // Render the current state of the grid
     for (let i = 0; i < cols; i++) {
