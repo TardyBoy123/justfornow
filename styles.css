@@ -31,14 +31,15 @@ body {
 
 /* Wii-style Popup */
 .popup {
-    background-color: #ffffff;
+    background-color: #f9f9f9;
     border-radius: 15px;
-    padding: 20px;
+    padding: 20px 30px;
     width: 80%;
     max-width: 400px;
     text-align: center;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
     font-family: Arial, sans-serif;
+    border: 1px solid #ccc;
 }
 
 .popup p {
@@ -50,7 +51,7 @@ body {
 /* Continue Button */
 #continue-btn {
     font-size: 1em;
-    padding: 10px 20px;
+    padding: 8px 20px;
     background-color: #e0e0e0;
     border: 1px solid #a0a0a0;
     border-radius: 10px;
