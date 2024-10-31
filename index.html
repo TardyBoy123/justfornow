@@ -7,16 +7,7 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <!-- Overlay for the welcome message, hidden by default -->
-    <div class="overlay" id="overlay">
-        <div class="popup">
-            <p>Welcome to justfornow.ca. This is my personal project to learn more about website development. Feel free to use the 'Contact' button to suggest feedback. Thanks, Kiyan</p>
-            <button id="continue-btn">Continue</button>
-        </div>
-    </div>
-
-    <!-- Main content of the Wii-style homepage -->
-    <div class="menu" id="main-content">
+    <div class="menu">
         <h1>justfornow.ca</h1>
         <div class="channels">
             <a href="macro-calculator.html" class="channel">Macro Calculator</a>
@@ -44,31 +35,25 @@
         </div>
     </div>
 
+    <!-- JavaScript to update the time -->
     <script>
-        // Function to show the welcome message only once per session
-        window.onload = function() {
-            if (!sessionStorage.getItem('welcomeShown')) {
-                document.getElementById("overlay").style.display = "flex";
-                document.getElementById("main-content").classList.add("blurred");
-                sessionStorage.setItem('welcomeShown', 'true');
-            }
-        };
-
-        document.getElementById("continue-btn").addEventListener("click", function() {
-            document.getElementById("overlay").style.display = "none";
-            document.getElementById("main-content").classList.remove("blurred");
-        });
-
         function updateTime() {
             const now = new Date();
-            const estDate = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
+
+            // Calculate EST/EDT offset
+            let estDate = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
+
+            // Format time as HH:MM
             const hours = estDate.getHours().toString().padStart(2, '0');
             const minutes = estDate.getMinutes().toString().padStart(2, '0');
-            document.getElementById('time-display').textContent = `${hours}:${minutes}`;
+            const timeString = `${hours}:${minutes}`;
+
+            document.getElementById('time-display').textContent = timeString;
         }
 
+        // Initial update and set interval for every minute
         updateTime();
-        setInterval(updateTime, 60000);
+        setInterval(updateTime, 60000); // Update every 60 seconds
     </script>
 </body>
 </html>
