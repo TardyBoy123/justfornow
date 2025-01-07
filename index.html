@@ -7,6 +7,12 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Video Background -->
+    <video autoplay muted loop id="background-video">
+        <source src="justfornownewbkacground.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
     <div class="menu">
         <h1>justfornow.ca</h1>
         <div class="channels">
@@ -16,21 +22,18 @@
             <a href="music-player.html" class="channel">Music Player</a>
             <a href="character-counter.html" class="channel">Character Counter</a>
             <a href="sand.html" class="channel">Falling Sand</a>
-            
             <a href="mailto:kiyansade@gmail.com" class="channel">Contact</a>
-            <!-- Blank channels to fill the grid -->
+            <!-- Fill Empty Space -->
             <div class="channel blank"></div>
             <div class="channel blank"></div>
             <div class="channel blank"></div>
             <div class="channel blank"></div>
             <div class="channel blank"></div>
             <div class="channel blank"></div>
-            <div class="channel blank"></div>
-            <div class="channel blank"></div>
+            <div class="channel">Extra Box</div>
         </div>
         <div class="bottom-bar">
             <div class="bottom-icon">Wii</div>
-            <div class="bottom-icon">SD Card</div>
             <div class="time-display" id="time-display">Loading...</div>
         </div>
     </div>
@@ -39,21 +42,14 @@
     <script>
         function updateTime() {
             const now = new Date();
-
-            // Calculate EST/EDT offset
             let estDate = new Date(now.toLocaleString("en-US", { timeZone: "America/New_York" }));
-
-            // Format time as HH:MM
             const hours = estDate.getHours().toString().padStart(2, '0');
             const minutes = estDate.getMinutes().toString().padStart(2, '0');
             const timeString = `${hours}:${minutes}`;
-
             document.getElementById('time-display').textContent = timeString;
         }
-
-        // Initial update and set interval for every minute
         updateTime();
-        setInterval(updateTime, 60000); // Update every 60 seconds
+        setInterval(updateTime, 60000);
     </script>
 </body>
 </html>
