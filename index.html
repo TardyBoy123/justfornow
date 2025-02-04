@@ -11,67 +11,6 @@
             background-size: cover;
             background-position: center;
             background-attachment: fixed;
-            font-family: Arial, sans-serif;
-            margin: 0;
-            padding: 0;
-        }
-
-        .menu {
-            background-color: #ADD8E6;
-            padding: 40px;
-            border-radius: 8px;
-            width: 50%;
-            margin: 100px auto;
-            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
-            text-align: center;
-        }
-
-        h1 {
-            font-size: 2.5em;
-            color: black;
-            margin-bottom: 20px;
-        }
-
-        .channels {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 15px;
-        }
-
-        .channel {
-            display: block;
-            padding: 10px 15px;
-            background-color: white;
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 6px;
-            transition: background-color 0.3s;
-            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
-        }
-
-        .channel:hover {
-            background-color: #87CEEB;
-            color: white;
-        }
-
-        .bottom-bar {
-            margin-top: 30px;
-            padding: 10px;
-            background-color: #87CEEB;
-            border-radius: 6px;
-            display: flex;
-            justify-content: space-between;
-            color: white;
-        }
-
-        .bottom-icon {
-            font-size: 1.2em;
-        }
-
-        .time-display {
-            font-size: 1.2em;
         }
     </style>
 </head>
@@ -106,7 +45,7 @@
             // Format time as HH:MM
             const hours = estDate.getHours().toString().padStart(2, '0');
             const minutes = estDate.getMinutes().toString().padStart(2, '0');
-            const timeString = `${hours}:${minutes}`;
+            const timeString = ${hours}:${minutes};
 
             document.getElementById('time-display').textContent = timeString;
         }
