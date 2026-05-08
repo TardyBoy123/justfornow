@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      background: #f0f0f0;
+      background: #f4f4f4;
       margin: 0;
       padding: 20px;
       color: #222;
@@ -19,7 +19,7 @@
     }
 
     .container {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: auto;
     }
 
@@ -40,22 +40,26 @@
       margin-top: 40px;
     }
 
+    .menu-buttons button {
+      width: 220px;
+    }
+
     .sports-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 15px;
+      gap: 18px;
       margin-top: 30px;
     }
 
     button {
       padding: 20px;
       border: none;
-      border-radius: 12px;
-      background: #ffffff;
+      border-radius: 14px;
+      background: white;
       font-size: 18px;
       font-weight: bold;
       cursor: pointer;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
       transition: 0.2s;
     }
 
@@ -63,13 +67,29 @@
       transform: scale(1.03);
     }
 
-    .menu-buttons button {
-      width: 220px;
+    .sports-grid button {
+      border-left: 8px solid #0073cf;
+    }
+
+    .sports-grid button:nth-child(4n+1) {
+      border-left-color: #e30613;
+    }
+
+    .sports-grid button:nth-child(4n+2) {
+      border-left-color: #f6c800;
+    }
+
+    .sports-grid button:nth-child(4n+3) {
+      border-left-color: #009b3a;
+    }
+
+    .sports-grid button:nth-child(4n+4) {
+      border-left-color: #0073cf;
     }
 
     .logo-container {
       text-align: center;
-      margin-top: 50px;
+      margin-top: 40px;
     }
 
     .special-logo {
@@ -77,16 +97,56 @@
       max-width: 80%;
     }
 
+    .video-link-container {
+      text-align: center;
+      margin-top: 30px;
+    }
+
+    .video-link-button {
+      display: inline-block;
+      background: #e30613;
+      color: white;
+      text-decoration: none;
+      padding: 18px 28px;
+      border-radius: 14px;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+      transition: 0.2s;
+    }
+
+    .video-link-button:hover {
+      transform: scale(1.03);
+      background: #c40511;
+    }
+
+    .intro-card {
+      background: white;
+      padding: 25px;
+      border-radius: 16px;
+      text-align: center;
+      max-width: 750px;
+      margin: 0 auto 25px auto;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
+      border-top: 8px solid #e30613;
+    }
+
+    .intro-card p {
+      font-size: 18px;
+      margin-bottom: 0;
+    }
+
     .card {
       background: white;
       padding: 25px;
-      border-radius: 12px;
+      border-radius: 16px;
       margin-bottom: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
     }
 
     ul {
-      margin-top: 10px;
+      margin-top: 15px;
+      line-height: 1.8;
     }
 
     .back-btn {
@@ -96,22 +156,28 @@
 
     .help-box {
       background: #fff3cd;
-      padding: 25px;
-      border-radius: 12px;
+      padding: 30px;
+      border-radius: 16px;
       text-align: center;
-      font-size: 22px;
+      font-size: 24px;
       font-weight: bold;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.12);
     }
 
     a.email-link {
       text-decoration: none;
       color: white;
-      background: #0077cc;
-      padding: 15px 25px;
-      border-radius: 10px;
+      background: #0073cf;
+      padding: 16px 26px;
+      border-radius: 12px;
       display: inline-block;
       margin-top: 20px;
       font-size: 20px;
+      font-weight: bold;
+    }
+
+    a.email-link:hover {
+      background: #005fa8;
     }
   </style>
 </head>
@@ -123,6 +189,7 @@
   <h1>Special Olympics Athletes</h1>
 
   <div id="mainMenu" class="section active">
+
     <div class="menu-buttons">
       <button onclick="showSection('sportsSection')">Sports</button>
       <button onclick="showSection('helpSection')">I Need Help</button>
@@ -136,33 +203,50 @@
         class="special-logo"
       >
     </div>
+
+    <div class="video-link-container">
+      <a
+        href="https://resources.specialolympics.org/sports-essentials/sports-and-coaching/warm-up-and-cool-down-videos"
+        target="_blank"
+        class="video-link-button"
+      >
+        🎥 Watch Warm Up Videos
+      </a>
+    </div>
+
   </div>
 
   <div id="sportsSection" class="section">
-    <h2>Select Your Sport</h2>
 
-    <div class="sports-grid">
-      <button onclick="showSport('basketball')">Basketball</button>
-      <button onclick="showSport('bocce')">Bocce</button>
-      <button onclick="showSport('bowling')">Bowling</button>
-      <button onclick="showSport('figureSkating')">Figure Skating</button>
-      <button onclick="showSport('floorBall')">Floor Ball</button>
-      <button onclick="showSport('floorHockey')">Floor Hockey</button>
-      <button onclick="showSport('gymnastics')">Gymnastics</button>
-      <button onclick="showSport('indoorSoccer')">Indoor Soccer</button>
-      <button onclick="showSport('powerLifting')">Power Lifting</button>
-      <button onclick="showSport('skiing')">Skiing</button>
-      <button onclick="showSport('speedSkating')">Speed Skating</button>
-      <button onclick="showSport('swimming')">Swimming</button>
-      <button onclick="showSport('volleyball')">Volleyball</button>
-      <button onclick="showSport('pickleball')">Pickleball</button>
-      <button onclick="showSport('golf')">Golf</button>
-      <button onclick="showSport('softball')">Softball</button>
-      <button onclick="showSport('tball')">T Ball</button>
-      <button onclick="showSport('trackField')">Track and Field</button>
+    <div class="intro-card">
+      <h2>Select Your Sport</h2>
+      <p>
+        Choose your sport to see simple warm-up exercises before practice or competition.
+      </p>
     </div>
 
-    <button class="back-btn" onclick="goHome()">Back</button>
+    <div class="sports-grid">
+      <button onclick="showSport('basketball')">🏀 Basketball</button>
+      <button onclick="showSport('bocce')">⚪ Bocce</button>
+      <button onclick="showSport('bowling')">🎳 Bowling</button>
+      <button onclick="showSport('figureSkating')">⛸️ Figure Skating</button>
+      <button onclick="showSport('floorBall')">🏑 Floor Ball</button>
+      <button onclick="showSport('floorHockey')">🏒 Floor Hockey</button>
+      <button onclick="showSport('gymnastics')">🤸 Gymnastics</button>
+      <button onclick="showSport('indoorSoccer')">⚽ Indoor Soccer</button>
+      <button onclick="showSport('powerLifting')">🏋️ Power Lifting</button>
+      <button onclick="showSport('skiing')">⛷️ Skiing</button>
+      <button onclick="showSport('speedSkating')">⛸️ Speed Skating</button>
+      <button onclick="showSport('swimming')">🏊 Swimming</button>
+      <button onclick="showSport('volleyball')">🏐 Volleyball</button>
+      <button onclick="showSport('pickleball')">🏓 Pickleball</button>
+      <button onclick="showSport('golf')">⛳ Golf</button>
+      <button onclick="showSport('softball')">🥎 Softball</button>
+      <button onclick="showSport('tball')">⚾ T Ball</button>
+      <button onclick="showSport('trackField')">🏃 Track and Field</button>
+    </div>
+
+    <button class="back-btn" onclick="goHome()">Main Menu</button>
   </div>
 
   <div id="helpSection" class="section">
@@ -171,21 +255,23 @@
       If this is not an emergency, contact your coach.
     </div>
 
-    <button class="back-btn" onclick="goHome()">Back</button>
+    <button class="back-btn" onclick="goHome()">Main Menu</button>
   </div>
 
   <div id="contactSection" class="section">
     <div class="card" style="text-align:center;">
       <h2>Contact</h2>
 
-      <p>If you need help or have questions, send an email.</p>
+      <p>
+        If you need help or have questions, send an email.
+      </p>
 
       <a class="email-link" href="mailto:kiyansade@gmail.com">
         Send Email
       </a>
     </div>
 
-    <button class="back-btn" onclick="goHome()">Back</button>
+    <button class="back-btn" onclick="goHome()">Main Menu</button>
   </div>
 
   <div id="sportDetails" class="section"></div>
@@ -195,92 +281,109 @@
 <script>
 const sports = {
   basketball: {
-    title: "Basketball",
+    title: "🏀 Basketball",
     text: "Basketball players need to warm up their legs, shoulders, and heart before playing.",
     exercises: ["Jog in place for 1 minute", "Arm circles", "High knees", "Side shuffles"]
   },
+
   bocce: {
-    title: "Bocce",
+    title: "⚪ Bocce",
     text: "Bocce players should warm up slowly and focus on balance and arm movement.",
     exercises: ["Shoulder rolls", "Gentle walking", "Wrist circles", "Light stretches"]
   },
+
   bowling: {
-    title: "Bowling",
+    title: "🎳 Bowling",
     text: "Bowling warm ups help protect the shoulders and wrists.",
     exercises: ["Arm swings", "Wrist stretches", "Shoulder circles", "Walking lunges"]
   },
+
   figureSkating: {
-    title: "Figure Skating",
+    title: "⛸️ Figure Skating",
     text: "Figure skaters should warm up balance, legs, and flexibility.",
     exercises: ["Leg swings", "Toe touches", "Balance on one foot", "Light jogging"]
   },
+
   floorBall: {
-    title: "Floor Ball",
+    title: "🏑 Floor Ball",
     text: "Floor ball players should prepare for quick movement and stick handling.",
     exercises: ["Side shuffles", "Quick feet", "Arm swings", "Light jogging"]
   },
+
   floorHockey: {
-    title: "Floor Hockey",
+    title: "🏒 Floor Hockey",
     text: "Floor hockey warm ups help prepare the legs and upper body.",
     exercises: ["Jogging", "Stick handling practice", "Arm circles", "Squats"]
   },
+
   gymnastics: {
-    title: "Gymnastics",
+    title: "🤸 Gymnastics",
     text: "Gymnasts should focus on flexibility and body control.",
     exercises: ["Toe touches", "Arm stretches", "Jumping jacks", "Balance practice"]
   },
+
   indoorSoccer: {
-    title: "Indoor Soccer",
+    title: "⚽ Indoor Soccer",
     text: "Soccer players should warm up their legs and get their heart rate up.",
     exercises: ["Jogging", "High knees", "Leg swings", "Side shuffles"]
   },
+
   powerLifting: {
-    title: "Power Lifting",
+    title: "🏋️ Power Lifting",
     text: "Power lifters should warm up muscles slowly before lifting heavy weights.",
     exercises: ["Bodyweight squats", "Arm circles", "Light stretching", "Practice lifts with low weight"]
   },
+
   skiing: {
-    title: "Skiing",
+    title: "⛷️ Skiing",
     text: "Skiers should prepare their legs and improve balance before skiing.",
     exercises: ["Squats", "Balance practice", "Leg swings", "Light jogging"]
   },
+
   speedSkating: {
-    title: "Speed Skating",
+    title: "⛸️ Speed Skating",
     text: "Speed skaters need strong legs and balance for skating.",
     exercises: ["Side lunges", "Leg swings", "Jogging", "Balance drills"]
   },
+
   swimming: {
-    title: "Swimming",
+    title: "🏊 Swimming",
     text: "Swimmers should warm up their shoulders and body before entering the pool.",
     exercises: ["Arm circles", "Shoulder stretches", "Light jumping jacks", "Walking"]
   },
+
   volleyball: {
-    title: "Volleyball",
+    title: "🏐 Volleyball",
     text: "Volleyball players should warm up their arms and legs before jumping and hitting.",
     exercises: ["Arm swings", "Jumping jacks", "Side shuffles", "Light jogging"]
   },
+
   pickleball: {
-    title: "Pickleball",
+    title: "🏓 Pickleball",
     text: "Pickleball warm ups help with quick movement and arm control.",
     exercises: ["Wrist circles", "Side shuffles", "Walking lunges", "Shoulder rolls"]
   },
+
   golf: {
-    title: "Golf",
+    title: "⛳ Golf",
     text: "Golf players should warm up their shoulders, back, and hips.",
     exercises: ["Torso twists", "Shoulder circles", "Hip stretches", "Light walking"]
   },
+
   softball: {
-    title: "Softball",
+    title: "🥎 Softball",
     text: "Softball players should prepare their throwing arm and legs.",
     exercises: ["Arm circles", "Jogging", "High knees", "Practice throws"]
   },
+
   tball: {
-    title: "T Ball",
+    title: "⚾ T Ball",
     text: "T Ball players should warm up gently before playing.",
     exercises: ["Walking", "Arm circles", "Light jogging", "Practice swings"]
   },
+
   trackField: {
-    title: "Track and Field",
+    title: "🏃 Track and Field",
     text: "Track athletes should prepare for running and movement.",
     exercises: ["High knees", "Butt kicks", "Leg swings", "Jogging"]
   }
@@ -305,9 +408,11 @@ function showSport(sportKey) {
   details.innerHTML = `
     <div class="card">
       <h2>${sport.title}</h2>
+
       <p>${sport.text}</p>
 
       <h3>Warm Up Exercises</h3>
+
       <ul>
         ${sport.exercises.map(ex => `<li>${ex}</li>`).join("")}
       </ul>
