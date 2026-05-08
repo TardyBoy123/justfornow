@@ -23,7 +23,23 @@
       margin: auto;
     }
 
-    .menu,
+    .section {
+      display: none;
+      margin-top: 30px;
+    }
+
+    .section.active {
+      display: block;
+    }
+
+    .menu-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin-top: 40px;
+    }
+
     .sports-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -47,13 +63,18 @@
       transform: scale(1.03);
     }
 
-    .section {
-      display: none;
-      margin-top: 30px;
+    .menu-buttons button {
+      width: 220px;
     }
 
-    .active {
-      display: block;
+    .logo-container {
+      text-align: center;
+      margin-top: 50px;
+    }
+
+    .special-logo {
+      width: 220px;
+      max-width: 80%;
     }
 
     .card {
@@ -101,30 +122,26 @@
 
   <h1>Special Olympics Athletes</h1>
 
-  <div id="mainMenu" class="menu active">
+  <div id="mainMenu" class="section active">
+    <div class="menu-buttons">
+      <button onclick="showSection('sportsSection')">Sports</button>
+      <button onclick="showSection('helpSection')">I Need Help</button>
+      <button onclick="showSection('contactSection')">Contact</button>
+    </div>
 
-    <button onclick="showSection('sportsSection')">
-      Sports
-    </button>
-
-    <button onclick="showSection('helpSection')">
-      I Need Help
-    </button>
-
-    <button onclick="showSection('contactSection')">
-      Contact
-    </button>
-
+    <div class="logo-container">
+      <img
+        src="Logo_Special_Olympics.svg"
+        alt="Special Olympics Logo"
+        class="special-logo"
+      >
+    </div>
   </div>
 
-  <!-- SPORTS -->
-
   <div id="sportsSection" class="section">
-
     <h2>Select Your Sport</h2>
 
     <div class="sports-grid">
-
       <button onclick="showSport('basketball')">Basketball</button>
       <button onclick="showSport('bocce')">Bocce</button>
       <button onclick="showSport('bowling')">Bowling</button>
@@ -143,269 +160,133 @@
       <button onclick="showSport('softball')">Softball</button>
       <button onclick="showSport('tball')">T Ball</button>
       <button onclick="showSport('trackField')">Track and Field</button>
-
     </div>
 
-    <button class="back-btn" onclick="goHome()">
-      Back
-    </button>
-
+    <button class="back-btn" onclick="goHome()">Back</button>
   </div>
 
-  <!-- HELP -->
-
   <div id="helpSection" class="section">
-
     <div class="help-box">
       If this is an emergency, call 911.<br><br>
       If this is not an emergency, contact your coach.
     </div>
 
-    <button class="back-btn" onclick="goHome()">
-      Back
-    </button>
-
+    <button class="back-btn" onclick="goHome()">Back</button>
   </div>
 
-  <!-- CONTACT -->
-
   <div id="contactSection" class="section">
-
     <div class="card" style="text-align:center;">
       <h2>Contact</h2>
 
-      <p>
-        If you need help or have questions, send an email.
-      </p>
+      <p>If you need help or have questions, send an email.</p>
 
-      <a
-        class="email-link"
-        href="mailto:kiyansade@gmail.com"
-      >
+      <a class="email-link" href="mailto:kiyansade@gmail.com">
         Send Email
       </a>
     </div>
 
-    <button class="back-btn" onclick="goHome()">
-      Back
-    </button>
-
+    <button class="back-btn" onclick="goHome()">Back</button>
   </div>
-
-  <!-- SPORT DETAILS -->
 
   <div id="sportDetails" class="section"></div>
 
 </div>
 
 <script>
-
 const sports = {
-
   basketball: {
     title: "Basketball",
     text: "Basketball players need to warm up their legs, shoulders, and heart before playing.",
-    exercises: [
-      "Jog in place for 1 minute",
-      "Arm circles",
-      "High knees",
-      "Side shuffles"
-    ]
+    exercises: ["Jog in place for 1 minute", "Arm circles", "High knees", "Side shuffles"]
   },
-
   bocce: {
     title: "Bocce",
     text: "Bocce players should warm up slowly and focus on balance and arm movement.",
-    exercises: [
-      "Shoulder rolls",
-      "Gentle walking",
-      "Wrist circles",
-      "Light stretches"
-    ]
+    exercises: ["Shoulder rolls", "Gentle walking", "Wrist circles", "Light stretches"]
   },
-
   bowling: {
     title: "Bowling",
     text: "Bowling warm ups help protect the shoulders and wrists.",
-    exercises: [
-      "Arm swings",
-      "Wrist stretches",
-      "Shoulder circles",
-      "Walking lunges"
-    ]
+    exercises: ["Arm swings", "Wrist stretches", "Shoulder circles", "Walking lunges"]
   },
-
   figureSkating: {
     title: "Figure Skating",
     text: "Figure skaters should warm up balance, legs, and flexibility.",
-    exercises: [
-      "Leg swings",
-      "Toe touches",
-      "Balance on one foot",
-      "Light jogging"
-    ]
+    exercises: ["Leg swings", "Toe touches", "Balance on one foot", "Light jogging"]
   },
-
   floorBall: {
     title: "Floor Ball",
     text: "Floor ball players should prepare for quick movement and stick handling.",
-    exercises: [
-      "Side shuffles",
-      "Quick feet",
-      "Arm swings",
-      "Light jogging"
-    ]
+    exercises: ["Side shuffles", "Quick feet", "Arm swings", "Light jogging"]
   },
-
   floorHockey: {
     title: "Floor Hockey",
     text: "Floor hockey warm ups help prepare the legs and upper body.",
-    exercises: [
-      "Jogging",
-      "Stick handling practice",
-      "Arm circles",
-      "Squats"
-    ]
+    exercises: ["Jogging", "Stick handling practice", "Arm circles", "Squats"]
   },
-
   gymnastics: {
     title: "Gymnastics",
     text: "Gymnasts should focus on flexibility and body control.",
-    exercises: [
-      "Toe touches",
-      "Arm stretches",
-      "Jumping jacks",
-      "Balance practice"
-    ]
+    exercises: ["Toe touches", "Arm stretches", "Jumping jacks", "Balance practice"]
   },
-
   indoorSoccer: {
     title: "Indoor Soccer",
     text: "Soccer players should warm up their legs and get their heart rate up.",
-    exercises: [
-      "Jogging",
-      "High knees",
-      "Leg swings",
-      "Side shuffles"
-    ]
+    exercises: ["Jogging", "High knees", "Leg swings", "Side shuffles"]
   },
-
   powerLifting: {
     title: "Power Lifting",
     text: "Power lifters should warm up muscles slowly before lifting heavy weights.",
-    exercises: [
-      "Bodyweight squats",
-      "Arm circles",
-      "Light stretching",
-      "Practice lifts with low weight"
-    ]
+    exercises: ["Bodyweight squats", "Arm circles", "Light stretching", "Practice lifts with low weight"]
   },
-
   skiing: {
     title: "Skiing",
     text: "Skiers should prepare their legs and improve balance before skiing.",
-    exercises: [
-      "Squats",
-      "Balance practice",
-      "Leg swings",
-      "Light jogging"
-    ]
+    exercises: ["Squats", "Balance practice", "Leg swings", "Light jogging"]
   },
-
   speedSkating: {
     title: "Speed Skating",
     text: "Speed skaters need strong legs and balance for skating.",
-    exercises: [
-      "Side lunges",
-      "Leg swings",
-      "Jogging",
-      "Balance drills"
-    ]
+    exercises: ["Side lunges", "Leg swings", "Jogging", "Balance drills"]
   },
-
   swimming: {
     title: "Swimming",
     text: "Swimmers should warm up their shoulders and body before entering the pool.",
-    exercises: [
-      "Arm circles",
-      "Shoulder stretches",
-      "Light jumping jacks",
-      "Walking"
-    ]
+    exercises: ["Arm circles", "Shoulder stretches", "Light jumping jacks", "Walking"]
   },
-
   volleyball: {
     title: "Volleyball",
     text: "Volleyball players should warm up their arms and legs before jumping and hitting.",
-    exercises: [
-      "Arm swings",
-      "Jumping jacks",
-      "Side shuffles",
-      "Light jogging"
-    ]
+    exercises: ["Arm swings", "Jumping jacks", "Side shuffles", "Light jogging"]
   },
-
   pickleball: {
     title: "Pickleball",
     text: "Pickleball warm ups help with quick movement and arm control.",
-    exercises: [
-      "Wrist circles",
-      "Side shuffles",
-      "Walking lunges",
-      "Shoulder rolls"
-    ]
+    exercises: ["Wrist circles", "Side shuffles", "Walking lunges", "Shoulder rolls"]
   },
-
   golf: {
     title: "Golf",
     text: "Golf players should warm up their shoulders, back, and hips.",
-    exercises: [
-      "Torso twists",
-      "Shoulder circles",
-      "Hip stretches",
-      "Light walking"
-    ]
+    exercises: ["Torso twists", "Shoulder circles", "Hip stretches", "Light walking"]
   },
-
   softball: {
     title: "Softball",
     text: "Softball players should prepare their throwing arm and legs.",
-    exercises: [
-      "Arm circles",
-      "Jogging",
-      "High knees",
-      "Practice throws"
-    ]
+    exercises: ["Arm circles", "Jogging", "High knees", "Practice throws"]
   },
-
   tball: {
     title: "T Ball",
     text: "T Ball players should warm up gently before playing.",
-    exercises: [
-      "Walking",
-      "Arm circles",
-      "Light jogging",
-      "Practice swings"
-    ]
+    exercises: ["Walking", "Arm circles", "Light jogging", "Practice swings"]
   },
-
   trackField: {
     title: "Track and Field",
     text: "Track athletes should prepare for running and movement.",
-    exercises: [
-      "High knees",
-      "Butt kicks",
-      "Leg swings",
-      "Jogging"
-    ]
+    exercises: ["High knees", "Butt kicks", "Leg swings", "Jogging"]
   }
-
 };
 
 function showSection(id) {
-
-  document.getElementById("mainMenu").classList.remove("active");
-
   document.querySelectorAll(".section").forEach(section => {
     section.classList.remove("active");
   });
@@ -414,28 +295,19 @@ function showSection(id) {
 }
 
 function goHome() {
-
-  document.querySelectorAll(".section").forEach(section => {
-    section.classList.remove("active");
-  });
-
-  document.getElementById("mainMenu").classList.add("active");
+  showSection("mainMenu");
 }
 
 function showSport(sportKey) {
-
   const sport = sports[sportKey];
-
   const details = document.getElementById("sportDetails");
 
   details.innerHTML = `
     <div class="card">
       <h2>${sport.title}</h2>
-
       <p>${sport.text}</p>
 
       <h3>Warm Up Exercises</h3>
-
       <ul>
         ${sport.exercises.map(ex => `<li>${ex}</li>`).join("")}
       </ul>
@@ -446,13 +318,8 @@ function showSport(sportKey) {
     </div>
   `;
 
-  document.querySelectorAll(".section").forEach(section => {
-    section.classList.remove("active");
-  });
-
-  details.classList.add("active");
+  showSection("sportDetails");
 }
-
 </script>
 
 </body>
