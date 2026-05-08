@@ -18,6 +18,14 @@
       text-align: center;
     }
 
+    .subtitle {
+      text-align: center;
+      font-size: 20px;
+      color: #555;
+      margin-top: -10px;
+      margin-bottom: 10px;
+    }
+
     .container {
       max-width: 1100px;
       margin: auto;
@@ -95,6 +103,13 @@
     .special-logo {
       width: 500px;
       max-width: 95%;
+    }
+
+    .small-note {
+      text-align: center;
+      color: #666;
+      font-size: 16px;
+      margin-top: 10px;
     }
 
     .video-link-container {
@@ -188,10 +203,14 @@
 
   <h1>Special Olympics Athletes</h1>
 
+  <p class="subtitle">
+    Choose a sport to see simple warm-up exercises before practice or competition.
+  </p>
+
   <div id="mainMenu" class="section active">
 
     <div class="menu-buttons">
-      <button onclick="showSection('sportsSection')">Sports</button>
+      <button onclick="showSection('sportsSection')">Find My Sport</button>
       <button onclick="showSection('helpSection')">I Need Help</button>
       <button onclick="showSection('contactSection')">Contact</button>
     </div>
@@ -213,6 +232,10 @@
         class="special-logo"
       >
     </div>
+
+    <p class="small-note">
+      Warm up slowly. Stop if you feel pain, dizziness, or shortness of breath.
+    </p>
 
   </div>
 
