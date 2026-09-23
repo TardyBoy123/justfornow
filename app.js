@@ -1,5 +1,18 @@
 /* Native scrolling, progressive links, and a single accessible channel window. */
 (() => {
+  const audio = document.querySelector('#ambient-audio'), sound = document.querySelector('#sound-toggle');
+  let waitingForGesture = true;
+  audio.volume = .35;
+  function soundState(playing){sound.setAttribute('aria-pressed',String(playing));sound.setAttribute('aria-label',playing?'Pause background music':'Play background music');document.querySelector('#sound-state').textContent=playing?'Playing dream':'Play dream';document.querySelector('#sound-symbol').textContent=playing?'Ⅱ':'▷';}
+  async function playAmbient(){try{await audio.play();waitingForGesture=false;}catch(e){if(e.name!=='AbortError')soundState(false);}}
+  audio.addEventListener('playing',()=>soundState(true));audio.addEventListener('pause',()=>soundState(false));
+  audio.addEventListener('error',()=>{waitingForGesture=false;document.querySelector('#sound-state').textContent='Track unavailable';sound.setAttribute('aria-label','Retry background music');});
+  sound.onclick=()=>{waitingForGesture=false;if(audio.paused){if(audio.error)audio.load();playAmbient();}else audio.pause();};
+  const gesture=e=>{if(waitingForGesture&&!sound.contains(e.target)&&(e.type==='pointerdown'||e.key==='Enter'||e.key===' '))playAmbient();};
+  document.addEventListener('pointerdown',gesture,{passive:true});document.addEventListener('keydown',gesture);
+  // Sound playback remains subject to the visitor's browser autoplay policy.
+  playAmbient();
+  addEventListener('message',e=>{if(e.origin===location.origin&&e.source===document.querySelector('#channel-frame').contentWindow&&e.data==='jfn-media-playing'){waitingForGesture=false;audio.pause();}});
   const chapters = [...document.querySelectorAll('.chapter')];
   const links = [...document.querySelectorAll('.chapter-nav a')];
   const label = document.querySelector('#chapter-label');
@@ -42,20 +55,27 @@
   document.querySelector('.skip-link').onclick = e => { e.preventDefault(); setDirectory(true); };
   if (location.hash === '#directory') setDirectory(true);
   const dialog = document.querySelector('#channel-dialog'), frame = document.querySelector('#channel-frame');
+  const orbit = document.querySelector('#orbit-dialog'), sphere = document.querySelector('#orbit-trigger');
+  sphere.onclick = () => { setDirectory(false); orbit.showModal(); sphere.setAttribute('aria-expanded','true'); document.body.classList.add('panel-open'); };
+  document.querySelector('#close-orbit').onclick = () => orbit.close();
+  orbit.addEventListener('close',() => { sphere.setAttribute('aria-expanded','false'); if (!dialog.open) { document.body.classList.remove('panel-open'); sphere.focus({preventScroll:true}); } });
+  orbit.addEventListener('click',e => { if(e.target===orbit){const r=orbit.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)orbit.close();} });
+  function sphereVisibility(){ sphere.hidden = scrollY > innerHeight * .55; }
+  addEventListener('scroll',sphereVisibility,{passive:true}); sphereVisibility();
   let opener;
   document.querySelectorAll('[data-panel]').forEach(link => link.addEventListener('click',e => {
     if (e.ctrlKey || e.metaKey || e.shiftKey || e.altKey || !dialog.showModal) return;
     e.preventDefault(); opener = link;
-    const title = link.querySelector('small') ? link.children[1].childNodes[0].textContent : link.childNodes[0].textContent;
+    const title = link.dataset.title || (link.querySelector('small') ? link.children[1].childNodes[0].textContent : link.childNodes[0].textContent);
     document.querySelector('#panel-title').textContent = title.trim();
     document.querySelector('#standalone-link').href = link.getAttribute('href');
     frame.title = title.trim(); frame.src = link.getAttribute('href') + '?embedded=1';
-    setDirectory(false); dialog.showModal(); document.body.classList.add('panel-open');
+    setDirectory(false); if (orbit.open) orbit.close(); dialog.showModal(); document.body.classList.add('panel-open');
   }));
   const close = () => dialog.close();
   document.querySelector('#close-panel').onclick = close;
   dialog.addEventListener('click',e => { if (e.target === dialog) { const r = dialog.getBoundingClientRect(); if (e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom) close(); } });
-  dialog.addEventListener('close',() => { frame.src = 'about:blank'; document.body.classList.remove('panel-open'); if (opener && !opener.closest('.directory')) opener.focus({preventScroll:true}); else toggle.focus({preventScroll:true}); });
+  dialog.addEventListener('close',() => { frame.src = 'about:blank'; document.body.classList.remove('panel-open'); if (opener?.closest('#orbit-dialog')) sphere.focus({preventScroll:true}); else if (opener && !opener.closest('.directory')) opener.focus({preventScroll:true}); else toggle.focus({preventScroll:true}); });
   addEventListener('message',e => { if (e.source === frame.contentWindow && e.data === 'jfn-close') close(); });
   addEventListener('keydown',e => { if (e.key === 'Escape' && directory.classList.contains('open')) { setDirectory(false); toggle.focus(); } });
 })();

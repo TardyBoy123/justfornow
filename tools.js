@@ -4,6 +4,7 @@
  const $=s=>document.querySelector(s), tool=document.body.dataset.tool;
  if(new URLSearchParams(location.search).has('embedded'))document.body.classList.add('embedded');
  addEventListener('keydown',e=>{if(e.key==='Escape'&&window.parent!==window)window.parent.postMessage('jfn-close',location.origin);});
+ document.querySelectorAll('audio,video').forEach(media=>media.addEventListener('play',()=>{if(parent!==window)parent.postMessage('jfn-media-playing',location.origin);}));
  document.querySelectorAll('audio,video').forEach(media=>media.addEventListener('play',()=>document.querySelectorAll('audio,video').forEach(other=>{if(other!==media)other.pause();})));
  if(tool==='character-counter'){
   function count(){const text=$('#textInput').value;$('#charCount').textContent=text.length;$('#wordCount').textContent=text.trim()?text.trim().split(/\s+/u).length:0;$('#noSpaces').textContent=text.replace(/\s/gu,'').length;}
