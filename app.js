@@ -16,7 +16,9 @@
   const chapters = [...document.querySelectorAll('.chapter')];
   const links = [...document.querySelectorAll('.chapter-nav a')];
   const label = document.querySelector('#chapter-label');
-  const names = ['INTRODUCTION','INSTRUMENTS','EXPERIMENTS','TRANSMISSIONS','CONNECTIONS'];
+
+  const names = ['INTRODUCTION','INSTRUMENTS','EXPERIMENTS','TRANSMISSIONS','CONNECTIONS','3D PRINTING'];
+
   const reduced = matchMedia('(prefers-reduced-motion: reduce)');
   let queued = false;
   function update() {
@@ -35,7 +37,9 @@
     });
     links.forEach((link,i) => i === active ? link.setAttribute('aria-current','step') : link.removeAttribute('aria-current'));
     label.textContent = `0${active} / ${names[active]}`;
-    window.jfnProgress = Math.max(0, Math.min(4, (scrollY / (document.documentElement.scrollHeight - innerHeight)) * 4));
+
+    window.jfnProgress = Math.max(0, Math.min(5, (scrollY / (document.documentElement.scrollHeight - innerHeight)) * 5));
+
     window.dispatchEvent(new Event('jfn-scroll'));
   }
   const schedule = () => { if (!queued) { queued = true; requestAnimationFrame(update); } };
