@@ -13,6 +13,10 @@
 <p class="tool-kicker">05.A / FROM FILE TO PHYSICAL</p>
 <h1>Custom 3D Printing<br><em>in London, Ontario.</em></h1>
 <p class="tool-description print-lede">Send an STL, STEP file, photo, or idea. I print in PLA, PETG and TPU and can help choose the right material.</p>
+<div class="print-status-row" aria-label="PrintLab service highlights">
+  <span>BUDGET-FRIENDLY</span><span>SMALL-BATCH</span><span>LOCAL LONDON</span><span>SAME-DAY QUOTES</span>
+</div>
+<p class="budget-note">A simple, budget-friendly custom printing service for one-offs, replacement parts, prototypes and small runs — with clear pricing before anything is printed.</p>
 
 <section class="print-grid" aria-label="3D printing materials">
 <article class="tool-card print-card material-card">
@@ -68,6 +72,34 @@
 </div>
 </section>
 
+
+<section class="print-section expect-section" id="expect">
+<p class="tool-kicker">WHAT TO EXPECT</p>
+<h2>Affordable custom prints,
+<br><em>with realistic expectations.</em></h2>
+<div class="expect-grid">
+  <article class="expect-card"><span>01</span><h3>Made to order</h3><p>Every job is printed for your project. Turnaround depends on size, material, complexity and printer availability.</p></article>
+  <article class="expect-card"><span>02</span><h3>Normal FDM finish</h3><p>Fine layer lines, small support marks and minor surface imperfections are normal with FDM printing.</p></article>
+  <article class="expect-card"><span>03</span><h3>Small fit variation</h3><p>Dimensions can vary slightly. Tight-fit or replacement parts may occasionally need a small revision.</p></article>
+  <article class="expect-card"><span>04</span><h3>Material matters</h3><p>I’ll recommend PLA, PETG or TPU based on heat, flexibility, strength and intended use.</p></article>
+  <article class="expect-card"><span>05</span><h3>As-printed finish</h3><p>Sanding, painting, polishing, filling and other post-processing are not included unless specifically agreed on.</p></article>
+  <article class="expect-card"><span>06</span><h3>Price first</h3><p>You’ll receive the price and estimated turnaround before anything is printed, so there are no surprise charges.</p></article>
+</div>
+<p class="fine-print expect-note">This is a budget-friendly service for one-offs, prototypes, replacement parts, hobby projects and small batches—not industrial production or safety-critical manufacturing. I may decline projects that require extreme precision, safety-critical performance or capabilities outside FDM printing.</p>
+</section>
+
+<section class="print-section review-section" id="reviews">
+  <div class="review-copy">
+    <p class="tool-kicker">REVIEWS</p>
+    <h2>Happy with your print?</h2>
+    <p>Reviews help a small local service grow. You can leave a review after your order, or check out what other customers have said.</p>
+  </div>
+  <div class="review-actions">
+    <a class="review-button review-primary" href="GOOGLE_REVIEW_PLACEHOLDER" target="_blank" rel="noopener">Leave me a review ↗</a>
+    <a class="review-button" href="GOOGLE_BUSINESS_PLACEHOLDER" target="_blank" rel="noopener">Check out reviews ↗</a>
+  </div>
+</section>
+
 <section class="tool-card quote-card" id="quote">
 <p class="tool-kicker">REQUEST A QUOTE</p>
 <h2>Send it over.</h2>
@@ -87,7 +119,19 @@
 <label class="field">Material<select name="Material"><option value="Not sure — please recommend">Not sure — recommend one</option><option>PLA</option><option>PETG</option><option>TPU</option></select></label>
 <label class="field">Quantity<input name="Quantity" type="number" min="1" value="1" required></label>
 </div>
-<label class="field">What do you need?<textarea name="Project details" rows="5" placeholder="What is it, approximate size, intended use, colour, deadline, etc." required></textarea></label>
+<label class="field">When do you need it?
+<select name="Needed by" required>
+<option value="" selected disabled>Select a timeframe</option>
+<option>As soon as possible</option>
+<option>Within 1–2 days</option>
+<option>Within 3–5 days</option>
+<option>Within 1 week</option>
+<option>Within 2 weeks</option>
+<option>No rush / flexible</option>
+<option>Specific date — see project details</option>
+</select>
+</label>
+<label class="field">What do you need?<textarea name="Project details" rows="5" placeholder="What is it, approximate size, intended use, colour, dimensions, or any other details I should know." required></textarea></label>
 <label class="field file-field">Attach a file <span>STL, STEP, photos or reference files · up to 10 MB total</span><input name="attachment" type="file" accept=".stl,.step,.stp,.3mf,.obj,.jpg,.jpeg,.png,.webp,.pdf"></label>
 <button class="primary" type="submit">Send quote request ↗</button>
 <p class="fine-print">Your request is sent directly from this page — no email app required. Local pickup/drop-off in London, Ontario; Canada-wide shipping available.</p>
