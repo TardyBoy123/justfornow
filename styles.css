@@ -505,3 +505,321 @@ body[data-tool="3d-printing"] #all-channels{color:var(--ink)}
   .expect-card,.review-button{transition:none;}
   .expect-card:hover,.review-button:hover{transform:none;}
 }
+
+/* =========================================================
+   PrintLab notebook UI — notebook / graph-paper presentation
+   ========================================================= */
+body.printlab-notebook-page{
+  --nb-paper:#f6f0df;
+  --nb-paper-2:#efe5ca;
+  --nb-ink:#16222d;
+  --nb-blue:#5d7c91;
+  --nb-grid:rgba(79,129,154,.18);
+  --nb-grid-strong:rgba(79,129,154,.28);
+  --nb-red:#d5746f;
+  --nb-yellow:#f0b95f;
+  --nb-line:rgba(25,42,53,.22);
+  --nb-shadow:rgba(36,30,18,.16);
+  margin:0;
+  color:var(--nb-ink);
+  background:#cfc7b5;
+}
+
+body.printlab-notebook-page .notebook-shell{
+  width:min(1180px,calc(100% - 34px));
+  margin:0 auto;
+  padding:22px 0 110px;
+}
+
+body.printlab-notebook-page .notebook-topbar{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:18px;
+  padding:14px 18px;
+  margin:0 0 18px;
+  border:1px solid rgba(22,34,45,.18);
+  background:rgba(246,240,223,.92);
+  box-shadow:0 8px 24px var(--nb-shadow);
+  position:sticky;
+  top:10px;
+  z-index:30;
+  backdrop-filter:blur(10px);
+}
+body.printlab-notebook-page .notebook-topbar a{color:var(--nb-ink)}
+
+body.printlab-notebook-page .notebook-page{
+  position:relative;
+  min-height:min(820px,88vh);
+  margin:18px 0 26px;
+  padding:70px 72px 62px 92px;
+  border:1px solid rgba(40,52,60,.16);
+  background-color:var(--nb-paper);
+  background-image:
+    linear-gradient(var(--nb-grid) 1px,transparent 1px),
+    linear-gradient(90deg,var(--nb-grid) 1px,transparent 1px),
+    linear-gradient(var(--nb-grid-strong) 1px,transparent 1px),
+    linear-gradient(90deg,var(--nb-grid-strong) 1px,transparent 1px);
+  background-size:20px 20px,20px 20px,100px 100px,100px 100px;
+  box-shadow:0 18px 40px var(--nb-shadow), inset 0 0 50px rgba(255,255,255,.28);
+  overflow:hidden;
+  scroll-margin-top:90px;
+}
+body.printlab-notebook-page .notebook-page::before{
+  content:"";
+  position:absolute;
+  left:54px;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:rgba(213,116,111,.6);
+}
+body.printlab-notebook-page .notebook-page::after{
+  content:"";
+  position:absolute;
+  left:17px;
+  top:0;
+  bottom:0;
+  width:16px;
+  background:repeating-linear-gradient(to bottom,transparent 0 26px,rgba(22,34,45,.24) 27px 30px,transparent 31px 52px);
+  opacity:.5;
+}
+
+body.printlab-notebook-page .notebook-page-inner{position:relative;z-index:2;max-width:1040px;margin:0 auto}
+body.printlab-notebook-page .notebook-label{
+  display:inline-block;
+  margin:0 0 22px;
+  padding:5px 9px 4px;
+  font:700 10px var(--mono,monospace);
+  letter-spacing:1.7px;
+  color:#2f596e;
+  border:1px solid rgba(47,89,110,.28);
+  background:rgba(255,255,255,.42);
+  transform:rotate(-.6deg);
+}
+body.printlab-notebook-page h1,
+body.printlab-notebook-page h2,
+body.printlab-notebook-page h3{color:var(--nb-ink)}
+body.printlab-notebook-page h1{
+  max-width:900px;
+  margin:0 0 28px;
+  font-size:clamp(58px,8vw,112px);
+  line-height:.93;
+  letter-spacing:-.065em;
+  font-weight:600;
+}
+body.printlab-notebook-page h1 em,
+body.printlab-notebook-page h2 em{
+  font-family:Georgia,serif;
+  font-weight:400;
+  color:#4d6675;
+}
+body.printlab-notebook-page h2{
+  margin:0 0 28px;
+  font-size:clamp(46px,6vw,78px);
+  line-height:1;
+  letter-spacing:-.045em;
+  font-weight:600;
+}
+body.printlab-notebook-page .notebook-lede{
+  max-width:800px;
+  margin:0 0 16px;
+  font-size:clamp(22px,2.3vw,32px);
+  line-height:1.45;
+}
+body.printlab-notebook-page .notebook-note,
+body.printlab-notebook-page .notebook-copy{
+  max-width:780px;
+  font-size:19px;
+  line-height:1.65;
+}
+body.printlab-notebook-page .notebook-note{color:#425764}
+body.printlab-notebook-page .notebook-small{font-size:13px;line-height:1.55;color:#5b6971}
+
+body.printlab-notebook-page .notebook-stamps{
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:32px;
+}
+body.printlab-notebook-page .notebook-stamps span{
+  padding:8px 10px 7px;
+  border:1px solid rgba(22,34,45,.28);
+  background:#fff7dd;
+  font:700 10px var(--mono,monospace);
+  letter-spacing:1px;
+  box-shadow:3px 3px 0 rgba(22,34,45,.08);
+}
+body.printlab-notebook-page .notebook-stamps span:nth-child(even){transform:rotate(.8deg)}
+body.printlab-notebook-page .notebook-stamps span:nth-child(odd){transform:rotate(-.6deg)}
+
+body.printlab-notebook-page .notebook-material-grid{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:18px;
+}
+body.printlab-notebook-page .notebook-material-card{
+  background:rgba(255,252,239,.9);
+  border:1px solid var(--nb-line);
+  box-shadow:7px 8px 0 rgba(37,49,58,.09);
+  transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;
+  overflow:hidden;
+}
+body.printlab-notebook-page .notebook-material-card:hover{
+  transform:translateY(-8px) rotate(-.4deg);
+  border-color:#5d7c91;
+  box-shadow:12px 14px 0 rgba(37,49,58,.11);
+}
+body.printlab-notebook-page .notebook-material-card img{display:block;width:100%;aspect-ratio:4/3;object-fit:cover;background:white;border-bottom:1px solid var(--nb-line)}
+body.printlab-notebook-page .notebook-material-card>div{padding:18px 18px 22px}
+body.printlab-notebook-page .material-code{font:700 9px var(--mono,monospace);letter-spacing:1.5px;color:#5e7280}
+body.printlab-notebook-page .notebook-material-card h3{font-size:42px;line-height:1;margin:10px 0 5px}
+body.printlab-notebook-page .notebook-material-card strong{display:block;font-size:17px;margin-bottom:10px;color:#35566a}
+body.printlab-notebook-page .notebook-material-card p{font-size:15px;line-height:1.55;margin:0;color:#43545e}
+
+body.printlab-notebook-page .notebook-gallery{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:14px;
+  margin-top:28px;
+}
+body.printlab-notebook-page .notebook-gallery figure{
+  margin:0;
+  background:#fffaf0;
+  border:1px solid var(--nb-line);
+  box-shadow:5px 6px 0 rgba(37,49,58,.08);
+  transition:transform .18s ease,box-shadow .18s ease;
+}
+body.printlab-notebook-page .notebook-gallery figure:hover{transform:translateY(-5px) rotate(-.5deg);box-shadow:9px 10px 0 rgba(37,49,58,.1)}
+body.printlab-notebook-page .notebook-gallery img{display:block;width:100%;aspect-ratio:1/1;object-fit:cover}
+body.printlab-notebook-page .notebook-gallery figcaption{padding:10px 11px 12px;font-size:13px;line-height:1.35;color:#3f525e}
+
+body.printlab-notebook-page .notebook-two-col{display:grid;grid-template-columns:1.05fr .95fr;gap:60px;align-items:center}
+body.printlab-notebook-page .notebook-checklist{list-style:none;margin:0;padding:0;background:rgba(255,252,239,.76);border:1px solid var(--nb-line)}
+body.printlab-notebook-page .notebook-checklist li{position:relative;padding:18px 20px 18px 50px;border-bottom:1px solid var(--nb-line);font-size:18px}
+body.printlab-notebook-page .notebook-checklist li:last-child{border-bottom:0}
+body.printlab-notebook-page .notebook-checklist li::before{content:"☐";position:absolute;left:18px;top:15px;font-size:22px;color:#47677a}
+
+body.printlab-notebook-page .notebook-expect-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin-top:22px}
+body.printlab-notebook-page .notebook-expect-grid article{padding:20px;background:rgba(255,252,239,.78);border:1px solid var(--nb-line);box-shadow:4px 5px 0 rgba(37,49,58,.06)}
+body.printlab-notebook-page .notebook-expect-grid span{font:700 10px var(--mono,monospace);color:#b35b57}
+body.printlab-notebook-page .notebook-expect-grid h3{margin:12px 0 8px;font-size:21px}
+body.printlab-notebook-page .notebook-expect-grid p{margin:0;font-size:14px;line-height:1.55;color:#465861}
+
+body.printlab-notebook-page .notebook-review-actions{display:flex;flex-direction:column;gap:12px}
+body.printlab-notebook-page .notebook-button,
+body.printlab-notebook-page .notebook-submit{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:54px;
+  padding:0 20px;
+  border:1px solid #294453;
+  background:#fffaf0;
+  color:#1e3542;
+  font:700 12px var(--mono,monospace);
+  letter-spacing:.8px;
+  text-decoration:none;
+  box-shadow:5px 6px 0 rgba(37,49,58,.1);
+  transition:transform .18s ease,box-shadow .18s ease,background .18s ease;
+}
+body.printlab-notebook-page .notebook-button:hover,
+body.printlab-notebook-page .notebook-submit:hover{transform:translate(-2px,-2px);box-shadow:8px 9px 0 rgba(37,49,58,.12)}
+body.printlab-notebook-page .notebook-button.primary,
+body.printlab-notebook-page .notebook-submit{background:#f0b95f;color:#172831}
+
+body.printlab-notebook-page .notebook-form{max-width:860px;padding:26px;border:1px solid var(--nb-line);background:rgba(255,252,239,.82);box-shadow:7px 8px 0 rgba(37,49,58,.08)}
+body.printlab-notebook-page .notebook-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+body.printlab-notebook-page .notebook-form label{display:block;margin:0 0 15px;font:700 11px var(--mono,monospace);letter-spacing:.6px;color:#334e5d}
+body.printlab-notebook-page .notebook-form input,
+body.printlab-notebook-page .notebook-form select,
+body.printlab-notebook-page .notebook-form textarea{
+  width:100%;
+  box-sizing:border-box;
+  margin-top:7px;
+  padding:13px 14px;
+  border:1px solid rgba(43,69,83,.34);
+  background:rgba(255,255,255,.66);
+  color:#152833;
+  font:15px/1.4 Arial,sans-serif;
+  border-radius:0;
+}
+body.printlab-notebook-page .notebook-form input:focus,
+body.printlab-notebook-page .notebook-form select:focus,
+body.printlab-notebook-page .notebook-form textarea:focus{outline:2px solid rgba(78,126,150,.45);outline-offset:1px}
+body.printlab-notebook-page .file-field span{display:block;margin-top:4px;font:400 11px Arial,sans-serif;color:#667780}
+body.printlab-notebook-page .quote-success{margin:0 0 20px;padding:14px 16px;border:1px solid #67926e;background:#edf7e9;color:#284c31}
+body.printlab-notebook-page .quote-honey{display:none!important}
+body.printlab-notebook-page .quote-intro strong{color:#a64f49}
+
+body.printlab-notebook-page .notebook-footer{text-align:center;margin:26px 0;color:#5d625d;font:10px var(--mono,monospace);letter-spacing:1px}
+
+body.printlab-notebook-page .floating-actions{
+  position:fixed;
+  left:50%;
+  bottom:18px;
+  transform:translateX(-50%);
+  z-index:60;
+  display:flex;
+  gap:8px;
+  padding:7px;
+  border:1px solid rgba(22,34,45,.18);
+  background:rgba(246,240,223,.92);
+  box-shadow:0 12px 30px rgba(31,29,23,.2);
+  backdrop-filter:blur(10px);
+}
+body.printlab-notebook-page .floating-actions a{
+  min-width:132px;
+  padding:12px 17px 11px;
+  text-align:center;
+  text-decoration:none;
+  font:700 10px var(--mono,monospace);
+  letter-spacing:1px;
+  border:1px solid rgba(30,54,68,.48);
+  color:#1d3440;
+  background:#fffaf0;
+  transition:transform .16s ease,background .16s ease;
+}
+body.printlab-notebook-page .floating-actions a:hover{transform:translateY(-2px)}
+body.printlab-notebook-page .floating-quote{background:#f0b95f!important}
+body.printlab-notebook-page .floating-help{background:#dceaf0!important}
+body.printlab-notebook-page .floating-actions.quote-visible .floating-quote{display:none}
+body.printlab-notebook-page .floating-actions.quote-visible .floating-help{min-width:160px}
+
+body.printlab-notebook-page.embedded .notebook-topbar{display:none}
+body.printlab-notebook-page.embedded .notebook-shell{padding-top:8px}
+
+@media(max-width:900px){
+  body.printlab-notebook-page .notebook-page{padding:58px 34px 50px 58px;min-height:auto}
+  body.printlab-notebook-page .notebook-page::before{left:34px}
+  body.printlab-notebook-page .notebook-page::after{left:9px}
+  body.printlab-notebook-page .notebook-material-grid{grid-template-columns:1fr}
+  body.printlab-notebook-page .notebook-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
+  body.printlab-notebook-page .notebook-two-col{grid-template-columns:1fr;gap:28px}
+  body.printlab-notebook-page .notebook-expect-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:620px){
+  body.printlab-notebook-page .notebook-shell{width:min(100% - 16px,1180px)}
+  body.printlab-notebook-page .notebook-page{padding:46px 20px 40px 38px;margin:10px 0 18px}
+  body.printlab-notebook-page .notebook-page::before{left:25px}
+  body.printlab-notebook-page .notebook-page::after{display:none}
+  body.printlab-notebook-page .notebook-topbar{top:5px;padding:10px 12px}
+  body.printlab-notebook-page .notebook-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}
+  body.printlab-notebook-page .notebook-expect-grid{grid-template-columns:1fr}
+  body.printlab-notebook-page .notebook-form{padding:17px}
+  body.printlab-notebook-page .notebook-form-grid{grid-template-columns:1fr;gap:0}
+  body.printlab-notebook-page .floating-actions{bottom:9px;width:calc(100% - 28px);justify-content:center}
+  body.printlab-notebook-page .floating-actions a{min-width:0;flex:1}
+}
+@media(prefers-reduced-motion:reduce){
+  body.printlab-notebook-page .notebook-material-card,
+  body.printlab-notebook-page .notebook-gallery figure,
+  body.printlab-notebook-page .notebook-button,
+  body.printlab-notebook-page .notebook-submit,
+  body.printlab-notebook-page .floating-actions a{transition:none}
+  body.printlab-notebook-page .notebook-material-card:hover,
+  body.printlab-notebook-page .notebook-gallery figure:hover,
+  body.printlab-notebook-page .notebook-button:hover,
+  body.printlab-notebook-page .notebook-submit:hover,
+  body.printlab-notebook-page .floating-actions a:hover{transform:none}
+}
