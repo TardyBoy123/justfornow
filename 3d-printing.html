@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#eeedf5">
+<meta name="description" content="Custom 3D printing in London, Ontario. PLA, PETG and TPU printing for custom parts, prototypes, replacement pieces and one-off projects. Send your file or idea for a quote.">
+<title>PrintLab London | Custom 3D Printing in London, Ontario</title>
+<script src="theme.js"></script><link rel="stylesheet" href="styles.css">
+</head>
+<body class="tool-page" data-tool="3d-printing">
+<main class="tool-shell print-shell">
+<header class="tool-top"><a class="wordmark" href="index.html">justfornow<span>.me</span> ✳</a><a href="index.html#print" id="all-channels">← All channels</a></header>
+<p class="tool-kicker">05.A / FROM FILE TO PHYSICAL</p>
+<h1>Custom 3D Printing<br><em>in London, Ontario.</em></h1>
+<p class="tool-description print-lede">Have a file, a broken plastic piece, or just an idea? Send what you have and I’ll review it, recommend a material, and get back to you with a quote.</p>
+
+<section class="print-grid" aria-label="3D printing materials">
+<div class="tool-card print-card"><span class="print-code">01 / PLA</span><h2>Clean + detailed.</h2><p>Great for models, prototypes, organizers and indoor parts where heat resistance is not a major concern.</p></div>
+<div class="tool-card print-card"><span class="print-code">02 / PETG</span><h2>Tough + practical.</h2><p>A strong all-round choice for functional parts, brackets and many automotive or workshop uses.</p></div>
+<div class="tool-card print-card"><span class="print-code">03 / TPU</span><h2>Flexible + durable.</h2><p>For soft or impact-resistant parts such as bumpers, sleeves, grommets and flexible components.</p></div>
+</section>
+
+<section class="print-section">
+<p class="tool-kicker">WHAT CAN I SEND?</p>
+<h2>A file, a photo,<br><em>or a rough idea.</em></h2>
+<div class="print-columns">
+<p>You can send an STL, STEP or other 3D model you already have. If you do not have a file, send photos and measurements of what you need and I can tell you whether the project looks feasible.</p>
+<ul class="print-list"><li>Replacement plastic parts</li><li>Automotive interior + trim pieces</li><li>Brackets, clips + adapters</li><li>Prototypes + functional parts</li><li>Hobby + DIY projects</li><li>Small-batch prints</li></ul>
+</div>
+</section>
+
+<section class="tool-card quote-card" id="quote">
+<p class="tool-kicker">REQUEST A QUOTE</p>
+<h2>Tell me what<br><em>you need.</em></h2>
+<form id="quote-form">
+<div class="form-grid">
+<label class="field">Your name<input id="quote-name" type="text" autocomplete="name" placeholder="Name" required></label>
+<label class="field">Your email<input id="quote-email" type="email" autocomplete="email" placeholder="you@example.com" required></label>
+</div>
+<div class="form-grid">
+<label class="field">Material<select id="quote-material"><option value="Not sure — please recommend">Not sure — please recommend</option><option>PLA</option><option>PETG</option><option>TPU</option></select></label>
+<label class="field">Quantity<input id="quote-quantity" type="number" min="1" value="1"></label>
+</div>
+<label class="field">What do you need?<textarea id="quote-details" rows="6" placeholder="Describe the part, approximate size, intended use, colour preference, deadline, or anything else that may help." required></textarea></label>
+<button class="primary" type="submit">Prepare quote email ↗</button>
+<p class="fine-print">After your email opens, attach any STL, STEP files, photos or reference images before sending. Quotes are based on material, size, print time, quantity and complexity.</p>
+</form>
+</section>
+
+<section class="print-section print-fulfillment"><p class="tool-kicker">GETTING YOUR PRINT</p><h2>London pickup.<br><em>Canada-wide shipping.</em></h2><p>Local pickup or drop-off can be arranged in London, Ontario. Shipping is available across Canada. Exact timing and delivery details are confirmed with your quote.</p></section>
+
+<p class="fine-print print-footer">PrintLab London · Custom 3D printing in PLA, PETG and TPU · London, Ontario</p>
+</main>
+<script>
+(() => {
+  const form = document.querySelector('#quote-form');
+  if (new URLSearchParams(location.search).has('embedded')) document.body.classList.add('embedded');
+  form.addEventListener('submit', e => {
+    e.preventDefault();
+    const name = document.querySelector('#quote-name').value.trim();
+    const email = document.querySelector('#quote-email').value.trim();
+    const material = document.querySelector('#quote-material').value;
+    const quantity = document.querySelector('#quote-quantity').value;
+    const details = document.querySelector('#quote-details').value.trim();
+    const subject = '3D Printing Quote Request — ' + name;
+    const body = `Hi,\n\nI would like a quote for a custom 3D print.\n\nName: ${name}\nEmail: ${email}\nPreferred material: ${material}\nQuantity: ${quantity}\n\nProject details:\n${details}\n\nI will attach any STL/STEP files or photos to this email.\n`;
+    location.href = `mailto:kiyansade@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+  });
+})();
+</script>
+</body></html>
