@@ -223,14 +223,9 @@ body.printlab-notebook-page[data-tool="3d-printing"] .page-turn-cue{bottom:42px;
     <p class="notebook-label">REQUEST A QUOTE / 07</p>
     <h2>Send it over.</h2>
     <p class="notebook-copy quote-intro"><strong>Same-day reply.</strong> I’ll respond as soon as possible, within the same day, with your price and estimated print timeline.</p>
-    <div id="quote-success" class="quote-success" hidden role="status"><strong>Request sent.</strong> Thanks — I’ll get back to you as soon as possible today with a price and estimated timeline.</div>
+    <div id="quote-email-note" class="quote-success" hidden role="status"><strong>Your email is ready.</strong> Your email app should open with the quote details filled in. Review it, attach your selected file if applicable, then press Send.</div>
 
-    <form id="quote-form" class="notebook-form" action="https://formsubmit.co/kiyansade@gmail.com" method="POST" enctype="multipart/form-data">
-      <input type="hidden" name="_subject" value="New PrintLab London quote request">
-      <input type="hidden" name="_template" value="table">
-      <input type="hidden" name="_next" value="https://justfornow.me/3d-printing.html?sent=1#quote">
-      <input type="hidden" name="_url" value="https://justfornow.me/3d-printing.html">
-      <input type="text" name="_honey" tabindex="-1" autocomplete="off" class="quote-honey" aria-hidden="true">
+    <form id="quote-form" class="notebook-form">
 
       <div class="notebook-form-grid">
         <label>Your name<input name="Name" type="text" autocomplete="name" placeholder="Name" required></label>
@@ -254,8 +249,8 @@ body.printlab-notebook-page[data-tool="3d-printing"] .page-turn-cue{bottom:42px;
       </label>
       <label>What do you need?<textarea name="Project details" rows="5" placeholder="What is it, approximate size, intended use, colour, dimensions, or any other details I should know." required></textarea></label>
       <label class="file-field">Attach a file <span>STL, STEP, photos or reference files · up to 10 MB total</span><input name="attachment" type="file" accept=".stl,.step,.stp,.3mf,.obj,.jpg,.jpeg,.png,.webp,.pdf"></label>
-      <button class="notebook-submit" type="submit">Send quote request ↗</button>
-      <p class="notebook-small">Your request is sent directly from this page — no email app required. Local pickup/drop-off in London, Ontario; Canada-wide shipping available.</p>
+      <button class="notebook-submit" type="submit">Open quote email ↗</button>
+      <p class="notebook-small">Submitting opens your email app with your quote details already filled in. If you selected a file, attach it to the email before sending. Local pickup/drop-off in London, Ontario; Canada-wide shipping available.</p>
     </form>
   </div>
 </section>
@@ -271,10 +266,50 @@ body.printlab-notebook-page[data-tool="3d-printing"] .page-turn-cue{bottom:42px;
 <script>
 (() => {
   if (new URLSearchParams(location.search).has('embedded')) document.body.classList.add('embedded');
-  const params = new URLSearchParams(location.search);
-  if (params.get('sent') === '1') {
-    const success = document.querySelector('#quote-success');
-    if (success) success.hidden = false;
+  const quoteForm = document.querySelector('#quote-form');
+  const emailNote = document.querySelector('#quote-email-note');
+  if (quoteForm) {
+    quoteForm.addEventListener('submit', (event) => {
+      event.preventDefault();
+      if (!quoteForm.reportValidity()) return;
+
+      const data = new FormData(quoteForm);
+      const name = String(data.get('Name') || '').trim();
+      const customerEmail = String(data.get('email') || '').trim();
+      const material = String(data.get('Material') || '').trim();
+      const quantity = String(data.get('Quantity') || '').trim();
+      const neededBy = String(data.get('Needed by') || '').trim();
+      const details = String(data.get('Project details') || '').trim();
+      const fileInput = quoteForm.querySelector('input[name="attachment"]');
+      const fileName = fileInput && fileInput.files && fileInput.files[0] ? fileInput.files[0].name : '';
+
+      const subject = `PrintLab London Quote Request – ${name}`;
+      const body = [
+        'Hi PrintLab London,',
+        '',
+        "I'd like to request a quote.",
+        '',
+        `Name: ${name}`,
+        `Email: ${customerEmail}`,
+        `Material: ${material}`,
+        `Quantity: ${quantity}`,
+        `Needed by: ${neededBy}`,
+        '',
+        'Project details:',
+        details,
+        '',
+        fileName ? `Selected file: ${fileName}` : 'Selected file: None',
+        fileName ? 'IMPORTANT: Please attach the selected file to this email before sending.' : '',
+        '',
+        'Sent from the PrintLab London quote form at justfornow.me.'
+      ].filter((line, index, arr) => !(line === '' && arr[index - 1] === '')).join('\n');
+
+      if (emailNote) {
+        emailNote.hidden = false;
+        emailNote.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+      window.location.href = `mailto:kiyansade@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    });
   }
 
   const pages = [...document.querySelectorAll('.notebook-page')];
