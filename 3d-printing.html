@@ -11,6 +11,86 @@
 <style>
 :root{--paper:#f7f0dc;--paper2:#fffaf0;--ink:#20201d;--muted:#6d685e;--rule:#b8c9d9;--margin:#db7770;--accent:#245b50;--shadow:rgba(50,42,28,.18)}
 *{box-sizing:border-box}html{scroll-behavior:smooth;scroll-snap-type:y mandatory}body.printlab-notebook-page{margin:0;color:var(--ink);background:var(--paper);font-family:Georgia,'Times New Roman',serif;overflow-x:hidden}.notebook-shell{width:min(1180px,100%);margin:0 auto 90px;filter:drop-shadow(0 18px 28px var(--shadow));perspective:1800px}.notebook-topbar{position:sticky;top:0;z-index:30;display:flex;justify-content:space-between;align-items:center;padding:15px 28px;background:#292823;color:#fff;border-radius:15px 15px 0 0;font:700 12px/1.2 Arial,sans-serif;letter-spacing:.08em}.notebook-topbar a{color:inherit;text-decoration:none}.wordmark{font-size:16px;letter-spacing:-.03em}.wordmark span{font-weight:400}.notebook-page{position:relative;min-height:100vh;scroll-snap-align:start;scroll-snap-stop:always;transform-origin:50% 0%;transform-style:preserve-3d;backface-visibility:hidden;transition:transform .7s cubic-bezier(.2,.75,.2,1),opacity .55s ease,filter .55s ease;padding:72px 7vw 70px 10vw;background-color:var(--paper);background-image:linear-gradient(90deg,transparent 0 7.5%,rgba(219,119,112,.55) 7.5% calc(7.5% + 1px),transparent calc(7.5% + 1px)),repeating-linear-gradient(0deg,transparent 0 31px,rgba(95,137,171,.20) 31px 32px);border-bottom:1px solid rgba(74,65,51,.18)}.notebook-page:nth-of-type(even){background-color:var(--paper2)}.notebook-page:before{content:'';position:absolute;left:3.1%;top:0;bottom:0;width:12px;background:radial-gradient(circle,#b9aa90 0 4px,transparent 4.5px) center 18px/12px 42px repeat-y;opacity:.8}.notebook-page-inner{position:relative;z-index:1;max-width:940px;margin:auto}.notebook-hero{min-height:calc(100vh - 84px);display:grid;align-items:center}.notebook-label{margin:0 0 24px;font:800 12px/1 Arial,sans-serif;letter-spacing:.17em;color:var(--accent)}h1,h2{font-weight:500;line-height:.96;letter-spacing:-.045em;margin:0 0 28px}h1{font-size:clamp(48px,8vw,100px);max-width:900px}h2{font-size:clamp(40px,6vw,72px);max-width:800px}h1 em,h2 em{font-weight:400;color:var(--accent)}.notebook-lede,.notebook-copy{font-size:clamp(19px,2vw,25px);line-height:1.55;max-width:760px}.notebook-note{max-width:650px;margin:32px 0;padding:18px 22px;background:#fff1a8;box-shadow:3px 4px 0 rgba(75,65,45,.15);transform:rotate(-1deg);font:600 17px/1.45 'Comic Sans MS','Bradley Hand',cursive}.notebook-stamps{display:flex;flex-wrap:wrap;gap:9px;margin-top:30px}.notebook-stamps span,.material-code{font:800 11px/1 Arial,sans-serif;letter-spacing:.08em}.notebook-stamps span{border:2px solid var(--ink);padding:9px 11px;transform:rotate(-1deg)}.notebook-stamps span:nth-child(even){transform:rotate(1deg)}.notebook-material-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}.notebook-material-card{background:rgba(255,255,255,.7);border:1px solid rgba(45,43,37,.25);padding:14px;box-shadow:4px 5px 0 rgba(73,62,45,.12);transform:rotate(-.4deg)}.notebook-material-card:nth-child(2){transform:rotate(.6deg)}.notebook-material-card img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#ddd5c4;filter:saturate(.85)}.notebook-material-card h3{font-size:32px;margin:8px 0 2px}.notebook-material-card strong{font:700 13px Arial,sans-serif;text-transform:uppercase}.notebook-material-card p{line-height:1.5}.notebook-gallery{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-top:28px}.notebook-gallery figure{margin:0;padding:10px 10px 15px;background:#fff;box-shadow:3px 5px 10px rgba(50,42,28,.16);transform:rotate(-1deg)}.notebook-gallery figure:nth-child(even){transform:rotate(1.1deg)}.notebook-gallery img{width:100%;aspect-ratio:1/1;object-fit:cover;background:#ddd}.notebook-gallery figcaption{padding-top:9px;font:600 13px/1.3 'Comic Sans MS','Bradley Hand',cursive}.notebook-small{font-size:13px;line-height:1.5;color:var(--muted);max-width:800px}.notebook-two-col{display:grid;grid-template-columns:1.1fr .9fr;gap:60px;align-items:center}.notebook-checklist{list-style:none;padding:0;margin:0;font:700 18px/1.4 Arial,sans-serif}.notebook-checklist li{padding:16px 10px 16px 42px;border-bottom:1px solid rgba(40,40,35,.22);position:relative}.notebook-checklist li:before{content:'✓';position:absolute;left:8px;color:var(--accent);font:700 25px 'Comic Sans MS',cursive}.notebook-expect-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}.notebook-expect-grid article{background:rgba(255,255,255,.58);padding:24px;border:1px solid rgba(45,43,37,.18)}.notebook-expect-grid article>span{font:800 12px Arial,sans-serif;color:var(--accent)}.notebook-expect-grid h3{font-size:23px;margin:10px 0}.notebook-expect-grid p{line-height:1.45}.notebook-review-actions{display:flex;flex-direction:column;gap:12px}.notebook-button,.notebook-submit{display:inline-flex;justify-content:center;align-items:center;min-height:52px;padding:14px 18px;border:2px solid var(--ink);background:transparent;color:var(--ink);text-decoration:none;font:800 13px Arial,sans-serif;letter-spacing:.05em;cursor:pointer}.notebook-button.primary,.notebook-submit{background:var(--ink);color:white}.notebook-form{max-width:800px;margin-top:32px;padding:30px;background:rgba(255,255,255,.62);border:1px solid rgba(45,43,37,.2);box-shadow:5px 6px 0 rgba(73,62,45,.12)}.notebook-form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.notebook-form label{display:block;margin:0 0 17px;font:700 12px Arial,sans-serif;letter-spacing:.04em}.notebook-form input,.notebook-form select,.notebook-form textarea{display:block;width:100%;margin-top:7px;padding:13px;border:0;border-bottom:2px solid #777066;background:rgba(255,255,255,.8);border-radius:0;font:16px Georgia,serif;color:var(--ink)}.notebook-form textarea{resize:vertical}.file-field span{font-weight:400;color:var(--muted)}.quote-honey{position:absolute!important;left:-9999px!important}.quote-success{padding:16px;background:#dfead8;border:1px solid #83967c}.notebook-footer{text-align:center;margin:0;padding:26px;background:#292823;color:#fff;font:700 11px Arial,sans-serif;letter-spacing:.12em;border-radius:0 0 15px 15px}.floating-actions{position:fixed;z-index:100;left:50%;bottom:max(18px,env(safe-area-inset-bottom));transform:translateX(-50%);display:flex;gap:9px;padding:7px;background:rgba(38,37,33,.92);border:1px solid rgba(255,255,255,.18);border-radius:999px;box-shadow:0 9px 28px rgba(0,0,0,.24);backdrop-filter:blur(12px)}.floating-actions a{display:flex;align-items:center;justify-content:center;min-height:44px;padding:0 20px;border-radius:999px;text-decoration:none;font:800 12px Arial,sans-serif;letter-spacing:.07em;white-space:nowrap}.floating-quote{background:#f7f0dc;color:#20201d}.floating-help{background:var(--accent);color:#fff}.floating-actions.quote-visible .floating-quote{display:none}.floating-actions.quote-visible{left:auto;right:18px;transform:none}.notebook-page.page-past{transform:rotateX(-7deg) translateY(-1.5vh);filter:brightness(.94);opacity:.78}.notebook-page.page-current{transform:rotateX(0deg) translateY(0);filter:none;opacity:1}.notebook-page.page-next{transform:rotateX(4deg) translateY(1vh);filter:brightness(.98);opacity:.94}.page-turn-cue{position:absolute;right:28px;bottom:24px;font:800 10px/1 Arial,sans-serif;letter-spacing:.14em;color:var(--muted);opacity:.75}.page-turn-cue:after{content:'  ↓'}.embedded .notebook-topbar{display:none}.embedded .notebook-shell{margin-top:0}.embedded .notebook-hero{min-height:100vh}@media(max-width:760px){body.printlab-notebook-page{background:var(--paper)}.notebook-shell{width:100%;margin:0 0 78px;filter:none}.notebook-topbar{border-radius:0;padding:14px 16px}.notebook-page{min-height:auto;padding:64px 24px 64px 52px;background-image:linear-gradient(90deg,transparent 0 32px,rgba(219,119,112,.5) 32px 33px,transparent 33px),repeating-linear-gradient(0deg,transparent 0 31px,rgba(95,137,171,.18) 31px 32px)}.notebook-page:before{left:10px}.notebook-hero{min-height:88vh}.notebook-material-grid,.notebook-expect-grid,.notebook-two-col,.notebook-form-grid{grid-template-columns:1fr}.notebook-gallery{grid-template-columns:repeat(2,1fr)}.notebook-two-col{gap:25px}.notebook-form{padding:18px}.floating-actions{width:max-content;max-width:calc(100% - 24px)}.floating-actions a{padding:0 16px}.floating-actions.quote-visible{right:12px}.notebook-footer{border-radius:0}}@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+
+
+/* FINAL NOTEBOOK OVERRIDES — isolate this page from the older PrintLab dark theme */
+body.printlab-notebook-page[data-tool="3d-printing"]{
+  --paper:#f7f0dc;
+  --paper2:#fffaf0;
+  --ink:#20201d;
+  --muted:#6d685e;
+  --accent:#245b50;
+  --line:rgba(54,70,74,.22);
+  --card:rgba(255,255,255,.68);
+  --field:rgba(255,255,255,.82);
+  --solid-surface:#f7f0dc;
+  color:#20201d !important;
+  background:#f7f0dc !important;
+  background-image:none !important;
+  min-height:100vh;
+}
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-shell{
+  width:100%;
+  max-width:none;
+  margin:0 0 88px;
+  filter:none;
+  background:#f7f0dc;
+}
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-topbar{
+  width:min(1180px,calc(100% - 32px));
+  margin:0 auto;
+  background:#f7f0dc;
+  color:#20201d;
+  border:1px solid rgba(45,43,37,.20);
+  border-radius:0;
+  box-shadow:0 5px 18px rgba(50,42,28,.10);
+}
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-page{
+  width:min(1180px,calc(100% - 32px));
+  margin:0 auto;
+  color:#20201d !important;
+  background-color:#f7f0dc !important;
+  box-shadow:0 8px 22px rgba(50,42,28,.10);
+}
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-page:nth-of-type(even){background-color:#fffaf0 !important}
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-page,
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-page p,
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-page li,
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-page strong,
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-page label,
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-page h1,
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-page h2,
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-page h3{
+  color:#20201d !important;
+}
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-page h1 em,
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-page h2 em,
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-label,
+body.printlab-notebook-page[data-tool="3d-printing"] .material-code{
+  color:#245b50 !important;
+}
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-small,
+body.printlab-notebook-page[data-tool="3d-printing"] .file-field span,
+body.printlab-notebook-page[data-tool="3d-printing"] .page-turn-cue{color:#6d685e !important}
+body.printlab-notebook-page[data-tool="3d-printing"] .quote-intro strong{color:#a34d46 !important}
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-button.primary,
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-submit{background:#20201d !important;color:#fffaf0 !important;border-color:#20201d !important}
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-button:not(.primary){background:#fffaf0 !important;color:#20201d !important;border-color:#20201d !important}
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-checklist{background:rgba(255,250,240,.72);border:1px solid rgba(45,43,37,.22)}
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-checklist li{color:#20201d !important}
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-form{background:rgba(255,250,240,.88)}
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-form input,
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-form select,
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-form textarea{background:#fffdf7 !important;color:#20201d !important;border-color:#777066 !important}
+body.printlab-notebook-page[data-tool="3d-printing"] .floating-actions{background:rgba(247,240,220,.96);border-color:rgba(45,43,37,.20)}
+body.printlab-notebook-page[data-tool="3d-printing"] .floating-quote{background:#f0b95f !important;color:#20201d !important}
+body.printlab-notebook-page[data-tool="3d-printing"] .floating-help{background:#dceaf0 !important;color:#20201d !important}
+body.printlab-notebook-page[data-tool="3d-printing"] .notebook-footer{background:#f7f0dc;color:#20201d;border-top:1px solid rgba(45,43,37,.18)}
+@media(max-width:760px){
+ body.printlab-notebook-page[data-tool="3d-printing"] .notebook-topbar,
+ body.printlab-notebook-page[data-tool="3d-printing"] .notebook-page{width:100%}
+}
+
 </style>
 
 </head>
