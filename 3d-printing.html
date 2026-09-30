@@ -223,7 +223,7 @@ body.printlab-notebook-page[data-tool="3d-printing"] .page-turn-cue{bottom:42px;
     <p class="notebook-label">REQUEST A QUOTE / 07</p>
     <h2>Send it over.</h2>
     <p class="notebook-copy quote-intro"><strong>Same-day reply.</strong> I’ll respond as soon as possible, within the same day, with your price and estimated print timeline.</p>
-    <div id="quote-email-note" class="quote-success" hidden role="status"><strong>Your email is ready.</strong> Your email app should open with the quote details filled in. Review it, attach your selected file if applicable, then press Send.</div>
+    <div id="quote-email-note" class="quote-success" hidden role="status"><strong>Your email is ready.</strong> Your email app should open with the quote details filled in. <strong>Add your file to the email if applicable</strong>, then press Send.</div>
 
     <form id="quote-form" class="notebook-form">
 
@@ -248,9 +248,8 @@ body.printlab-notebook-page[data-tool="3d-printing"] .page-turn-cue{bottom:42px;
         </select>
       </label>
       <label>What do you need?<textarea name="Project details" rows="5" placeholder="What is it, approximate size, intended use, colour, dimensions, or any other details I should know." required></textarea></label>
-      <label class="file-field">Attach a file <span>STL, STEP, photos or reference files · up to 10 MB total</span><input name="attachment" type="file" accept=".stl,.step,.stp,.3mf,.obj,.jpg,.jpeg,.png,.webp,.pdf"></label>
       <button class="notebook-submit" type="submit">Open quote email ↗</button>
-      <p class="notebook-small">Submitting opens your email app with your quote details already filled in. If you selected a file, attach it to the email before sending. Local pickup/drop-off in London, Ontario; Canada-wide shipping available.</p>
+      <p class="notebook-small"><strong>Have an STL, STEP, 3MF, photo, or reference file?</strong> Add it as an attachment to the email after it opens. Local pickup/drop-off in London, Ontario; Canada-wide shipping available.</p>
     </form>
   </div>
 </section>
@@ -260,7 +259,7 @@ body.printlab-notebook-page[data-tool="3d-printing"] .page-turn-cue{bottom:42px;
 
 <nav class="floating-actions" aria-label="Quick actions">
   <a class="floating-quote" href="#quote">GET A QUOTE</a>
-  <a class="floating-help" href="mailto:printlab@justfornow.me?subject=PrintLab%20London%20-%20Quick%20Question">HELP!</a>
+  <a class="floating-help" href="mailto:kiyansade@gmail.com?subject=PrintLab%20London%20-%20Quick%20Question">HELP!</a>
 </nav>
 
 <script>
@@ -280,8 +279,6 @@ body.printlab-notebook-page[data-tool="3d-printing"] .page-turn-cue{bottom:42px;
       const quantity = String(data.get('Quantity') || '').trim();
       const neededBy = String(data.get('Needed by') || '').trim();
       const details = String(data.get('Project details') || '').trim();
-      const fileInput = quoteForm.querySelector('input[name="attachment"]');
-      const fileName = fileInput && fileInput.files && fileInput.files[0] ? fileInput.files[0].name : '';
 
       const subject = `PrintLab London Quote Request – ${name}`;
       const body = [
@@ -298,8 +295,7 @@ body.printlab-notebook-page[data-tool="3d-printing"] .page-turn-cue{bottom:42px;
         'Project details:',
         details,
         '',
-        fileName ? `Selected file: ${fileName}` : 'Selected file: None',
-        fileName ? 'IMPORTANT: Please attach the selected file to this email before sending.' : '',
+        'REMEMBER TO ADD FILE IF APPLICABLE',
         '',
         'Sent from the PrintLab London quote form at justfornow.me.'
       ].filter((line, index, arr) => !(line === '' && arr[index - 1] === '')).join('\n');
